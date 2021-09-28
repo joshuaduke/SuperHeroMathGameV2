@@ -1,0 +1,43 @@
+*{
+    margin:0;
+    padding:0;
+    line-height:1.4rem;
+}
+
+body{
+    // background-color:#0176F2;
+}
+
+header{
+    width:100%;
+
+    nav{
+        padding:20px;
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas: "logo title icons";
+    
+    .navLogo{
+        grid-area: logo;
+        text-align: left;
+        figcaption{
+            font-size: 12px;
+        }
+    }
+
+    .navTitle{
+        grid-area: title;
+        color:red;
+        text-align: center;
+    }
+
+    .navIcons{
+        grid-area: icons;
+        text-align: right;
+    }
+
+    img{
+        width:150px;
+    }
+    }
+}

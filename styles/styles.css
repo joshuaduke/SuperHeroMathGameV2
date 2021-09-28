@@ -1,9 +1,49 @@
-*{
-    margin:0;
-    padding:0;
-    line-height:1.4rem;
+* {
+  margin: 0;
+  padding: 0;
+  line-height: 1.4rem;
 }
 
-h1{
-    color:red;
+header {
+  width: 100%;
 }
+
+header nav {
+  padding: 20px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-areas: "logo title icons";
+}
+
+header nav .navLogo {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: logo;
+  text-align: left;
+}
+
+header nav .navLogo figcaption {
+  font-size: 12px;
+}
+
+header nav .navTitle {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: title;
+  color: red;
+  text-align: center;
+}
+
+header nav .navIcons {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: icons;
+  text-align: right;
+}
+
+header nav img {
+  width: 150px;
+}
+/*# sourceMappingURL=styles.css.map */
