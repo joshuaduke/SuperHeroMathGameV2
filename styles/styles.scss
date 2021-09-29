@@ -119,6 +119,8 @@ main{
 
 .gameRules{
     //center in the middle of the page and overlay
+    
+    visibility: hidden;
     position:absolute;
     top:50%;
     left:50%;
@@ -145,6 +147,11 @@ main{
             position:relative;
             left:110%;
             bottom:20px;
+            cursor: pointer;
         }
     }
+}
+
+.show{
+    visibility:visible ;
 }

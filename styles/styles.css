@@ -124,6 +124,7 @@ main h2 {
 
 /* GAME RULES */
 .gameRules {
+  visibility: hidden;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -152,5 +153,10 @@ main h2 {
   position: relative;
   left: 110%;
   bottom: 20px;
+  cursor: pointer;
+}
+
+.show {
+  visibility: visible;
 }
 /*# sourceMappingURL=styles.css.map */
