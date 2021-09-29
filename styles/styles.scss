@@ -2,6 +2,11 @@
     margin:0;
     padding:0;
     line-height:1.4rem;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
 }
 
 body{
@@ -39,5 +44,107 @@ header{
     img{
         width:150px;
     }
+    }
+}
+
+/* LEVELS */
+
+main{
+    z-index: 0;
+    h2{
+        text-align: center;
+    }
+}
+
+.levelContainer{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "logo title icons";
+    grid-gap:10px;
+    padding:10px 20px;
+
+    .levels{
+        background-color: yellow;
+        width:200px;
+        text-align: center;
+        padding:10px;
+        margin:0 auto;
+    }
+}
+
+
+/* CHARACTERS */
+
+.characters{
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas: "char1  start char2 rules char3";
+    align-items: center;
+    justify-items: center;
+
+    .heroes{
+        // text-align: center;
+    }
+
+    img{
+        width:350px;
+    }
+
+    button{
+        background-color:red;
+        padding:5px 25px;
+        color:#fff;
+        border:none;
+        font-weight:700;
+        font-size:1.1em;
+        letter-spacing: 2px;
+        box-shadow:1px 3px 1px #000; 
+        cursor:pointer;
+
+    }
+
+    .start{
+        grid-area: start;
+
+    }
+
+    .rules{
+        grid-area: rules;
+
+    }
+}
+
+
+/* GAME RULES */
+
+.gameRules{
+    //center in the middle of the page and overlay
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    z-index: 1000;
+    
+    div{
+        //div fit the content
+        display: inline-block;
+        background-color:blue;
+        padding:30px 100px;
+        margin: 0 auto;
+        border:5px solid red;
+        
+        p, h3, .close{
+            color:#fff;
+        }
+
+        p{
+            margin:5px 0;
+        }
+
+        .close{
+            position:relative;
+            left:110%;
+            bottom:20px;
+        }
     }
 }
