@@ -1,6 +1,9 @@
+let playBtn = document.querySelector(`.playBtn`);
+let detailsModal = document.querySelector(`.userDetailsModal`);
 
-
-
+playBtn.addEventListener("click", () => {
+    detailsModal.style.display = "none";
+})
 
 
 function main(){
@@ -18,7 +21,7 @@ function main(){
     //level 2 begins
     //equation and logos are updated
     //hidden logos are set to visible
-    
+
 
 
 

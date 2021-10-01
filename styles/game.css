@@ -67,6 +67,7 @@ header .equation {
   display: block;
   color: #000;
   padding: 10px 20px;
+  cursor: pointer;
 }
 
 footer {

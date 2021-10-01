@@ -2,10 +2,10 @@
 //Make Rules appear
 
 let rulesBtn = document.querySelector(`.rules`);
-let rulesContainer = document.querySelector(`.gameRules`)
+let rulesModal = document.querySelector(`.gameRules`)
 
 rulesBtn.addEventListener("click", () => {
-    rulesContainer.classList.toggle("show");
+    rulesModal.style.visibility = "visible"
 })
 
 //close rules
@@ -13,5 +13,21 @@ rulesBtn.addEventListener("click", () => {
 let close = document.querySelector(`.close`)
 
 close.addEventListener("click", ()=>{
-    rulesContainer.classList.toggle("show");
+    rulesModal.style.visibility = "hidden";
 })
+
+// Exit modal when user clicks anywhere outisde of it.
+window.onclick = (e) => {
+    if(e.target == rulesModal) {
+        rulesModal.style.visibility = "hidden";
+    }
+}
+
+
+
+
+
+
+function main(){
+
+}
