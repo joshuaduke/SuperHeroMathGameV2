@@ -4,7 +4,81 @@ header .equation {
 
 .gameContainer {
   width: 100%;
+  position: relative;
   background-color: #e4e4e4;
-  height: 100vh;
+  height: 80vh;
+}
+
+.gameContainer .heroLogo {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.gameContainer .resultContainer {
+  position: absolute;
+  top: 35px;
+  left: 55px;
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: red;
+  padding: 10px;
+}
+
+.userDetailsModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  z-index: 1000;
+}
+
+.userDetailsModal .userDetailsModalContent {
+  width: 35%;
+  background-color: blue;
+  padding: 20px 50px;
+  margin: 35vh auto;
+  border: 5px solid red;
+}
+
+.userDetailsModal .userDetailsModalContent h3, .userDetailsModal .userDetailsModalContent label, .userDetailsModal .userDetailsModalContent button {
+  color: #fff;
+  text-align: center;
+  letter-spacing: 2px;
+  margin: 20px auto;
+}
+
+.userDetailsModal .userDetailsModalContent input {
+  padding: 5px 10px;
+}
+
+.userDetailsModal .userDetailsModalContent input:focus {
+  outline: none;
+}
+
+.userDetailsModal .userDetailsModalContent button {
+  display: block;
+  color: #000;
+  padding: 10px 20px;
+}
+
+footer {
+  width: 100%;
+  padding: 52px 20px;
+  background-color: yellow;
+}
+
+footer .scoreContainer {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
 }
 /*# sourceMappingURL=game.css.map */
