@@ -11,8 +11,8 @@
 <body>
     <header>
         <nav>
-            <div class="equation">
-                <p>1+1=2</p>
+            <div class="equationBox">
+                <p class="equation"></p>
             </div>
             <div class="navTitle">
                 <h1>SUPERHERO MATH GAME</h1>
@@ -65,11 +65,18 @@
             <div class="userDetailsModalContent">
                 <h3>Please enter a username</h3>
                 <label for="userName">Username:</label>
-                <input type="text">
+                <input id="userName" type="text">
+                <p class="errorMsg"></p>
                 <button class="playBtn">PLAY</button>
             </div>
-
         </section>
+
+        <section class="countdownContainer">
+            <div>
+                <p class="countdown"></p>
+            </div>
+        </section>
+
     </main>
 
     <footer>
