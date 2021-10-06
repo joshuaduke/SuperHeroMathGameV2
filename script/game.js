@@ -1,8 +1,6 @@
-
 // retrieve user name value
 let userName = document.getElementById(`userName`);
 let modalErrorMsg = document.querySelector(`.errorMsg`);
-
 
 //Details Modal
 //display modal where user can enter name
@@ -15,38 +13,71 @@ playBtn.addEventListener("click", () => {
     } else {
         alert(userName.value);
         detailsModal.style.display = "none";
+        runCountdown();
     }
     
 })
 
-
+//Return a random number from 1 - 12
 function getRandomNum(){
-    return Math.floor(Math.random() * 12);
+    return Math.floor(Math.random() * 12) + 1 ;
 }
 
-function createEquation(){
+
+function createEquation(operator){
     let firstNum = getRandomNum();
     let secondNum = getRandomNum();
     let equationBox = document.querySelector(`.equation`);
     let result;
 
-    equationBox.innerHTML = `${firstNum} + ${secondNum}`;
+    switch(operator){
+        case '+':
+            equationBox.innerHTML = `${firstNum} + ${secondNum}`;
+            return result = firstNum + secondNum;
+
+        case '-':
+            let max = Math.max(firstNum, secondNum);
+            let min = Math.min(firstNum, secondNum);
+
+            equationBox.innerHTML = `${max} - ${min}`;
+            return result = max - min;
+        
+        case '*':
+            equationBox.innerHTML = `${firstNum} * ${secondNum}`;
+            return result = firstNum * secondNum;
+
+        case '/':
+                        
+            while(firstNum % secondNum != 0){
+                firstNum = getRandomNum();
+                secondNum = getRandomNum();
+            }
+
+
+            equationBox.innerHTML = `${firstNum} / ${secondNum}`;
+            return result = firstNum / second;
+
+    }
+
     
-    return result = firstNum + secondNum;
 }
 
+//grey out screen and 3 second countdown before game starts
 function runCountdown(){
     let counter = document.querySelector(`.countdown`);
-    let timeleft = 3;
+    let counterContainer = document.querySelector(`.countdownContainer`);
+    counterContainer.style.display = "block";
 
+    let timeleft = 3;
     let downloadTimer = setInterval(function(){
-    if(timeleft <= 0){
-        clearInterval(downloadTimer);
-        counter.innerHTML = "Finished";
-    } else {
-        counter.innerHTML = timeleft;
-    }
-    timeleft -= 1;
+        if(timeleft <= 0){
+            clearInterval(downloadTimer);
+            counter.innerHTML = "Go";
+            counterContainer.style.display = "none";
+        } else {
+            counter.innerHTML = timeleft;
+        }
+        timeleft -= 1;
     }, 1000);
     
 }
@@ -72,9 +103,7 @@ function main(){
     //equation and logos are updated
     //hidden logos are set to visible
 
-    createEquation();
-    runCountdown()
-
+    createEquation('*');
 }
 
 main();
