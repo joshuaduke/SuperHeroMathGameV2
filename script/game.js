@@ -7,6 +7,13 @@ let modalErrorMsg = document.querySelector(`.errorMsg`);
 let playBtn = document.querySelector(`.playBtn`);
 let detailsModal = document.querySelector(`.userDetailsModal`);
 
+let answersArr = [];
+let result;
+let score = 0;
+let misses = 0;
+let level = 1;
+let time = 0;
+
 // playBtn.addEventListener("click", () => {
 //     if(userName.value == ""){
 //         modalErrorMsg.innerHTML = "Please Enter a User Name"
@@ -118,22 +125,28 @@ function generateAnswers(result){
     return resultOptions;
 }
 
+function reload(){
+    //what needs to change
+    //equation
+    //result
+    result = createEquation('+');
+    
+    //position
+    logoPosition()
+    
+    //hero values
+    answersArr = generateAnswers(result)
 
-
-// Run level one
-//This level will run for 30 seconds and will
-// call the create equation function with the addition operator
-function playLevelOne(){
-    //level one = addition
-    let result = createEquation('+');
+    //assign result to a logo
     let heroLogosValue =  document.querySelectorAll(`.result`);
-    let answersArr = [];
+    // let answersArr = [];
     
     let heroLogos =  document.querySelectorAll(`.heroLogo`);
 
     //Generate a starting position for each hero logo
-    logoPosition();
-    answersArr = generateAnswers(result);
+    // logoPosition();
+    
+    // answersArr = generateAnswers(result);
     
     console.log('Hero Values', heroLogos);
 
@@ -144,22 +157,43 @@ function playLevelOne(){
         }
     }
 
+    return result;
+}
+
+
+// Run level one
+//This level will run for 30 seconds and will
+// call the create equation function with the addition operator
+function playLevelOne(){
+    //level one = addition
+    // let result = createEquation('+');
+    result = reload();
+
+    let heroLogosValue =  document.querySelectorAll(`.result`);
+    // let answersArr = [];
+    
+    let heroLogos =  document.querySelectorAll(`.heroLogo`);
+
     heroLogos.forEach(element => {
 
         element.addEventListener('click', (e)=>{
             
             //retrieve the child class result from heroLogo
-            let value = element.querySelector('.result').innerHTML
-            alert(value);
-            // if(e.target.childNode.querySelector(`.result`)){
-            //     alert(e.target.childNode.querySelector(`.result`).innerHTML);
-            // }
+            let value = parseInt(element.querySelector('.result').innerHTML)
+
+            //verify chosen answer
+            //if correct generate new equation
+            // if not correct make option disappear
+            if(value === result){
+                console.log("Correct answer")
+                result = reload();
+            } else {
+                console.log("false");
+            }
         })
     });
 
-    //verify chosen answer
-    //if correct generate new equation
-    // if not correct make option disappear
+
 }
 
 function getRandomPosition(){
