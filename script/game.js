@@ -10,7 +10,9 @@ let detailsModal = document.querySelector(`.userDetailsModal`);
 let answersArr = [];
 let result;
 let score = 0;
+let scoreContainer = document.querySelector(`.score`);
 let misses = 0;
+let missContainer = document.querySelector(`.miss`);
 let level = 1;
 let time = 0;
 
@@ -126,6 +128,13 @@ function generateAnswers(result){
 }
 
 function reload(){
+    //assign result to a logo
+    let heroLogosValue =  document.querySelectorAll(`.result`);
+    let heroLogos =  document.querySelectorAll(`.heroLogo`);
+
+    heroLogos.forEach(element => {
+        element.style.display = "block"
+    })
     //what needs to change
     //equation
     //result
@@ -137,11 +146,11 @@ function reload(){
     //hero values
     answersArr = generateAnswers(result)
 
-    //assign result to a logo
-    let heroLogosValue =  document.querySelectorAll(`.result`);
+    
     // let answersArr = [];
     
-    let heroLogos =  document.querySelectorAll(`.heroLogo`);
+
+    
 
     //Generate a starting position for each hero logo
     // logoPosition();
@@ -186,9 +195,18 @@ function playLevelOne(){
             // if not correct make option disappear
             if(value === result){
                 console.log("Correct answer")
+                score++;
+                scoreContainer.innerHTML = score;
                 result = reload();
             } else {
                 console.log("false");
+                misses++;
+                missContainer.innerHTML = misses;
+                element.style.display = "none";
+                if(score > 0){
+                    score--; 
+                    scoreContainer.innerHTML = score;
+                }
             }
         })
     });
