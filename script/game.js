@@ -87,35 +87,79 @@ function runCountdown(){
     
 }
 
+
+function generateAnswers(result){
+    let heroLogosValue =  document.querySelectorAll(`.result`);
+
+    //create an array to store values for each hero logo
+    let resultOptions = [];
+
+    //loop through array to see if any value is equal to the result
+    // if it is assign new value
+    for(i = 0; i < heroLogosValue.length; i++){
+        let option;
+
+        do {
+            option = getRandomNum(25);
+            resultOptions.push(option);
+        } while(option == result);
+    }
+
+    //choose a random element from the array and assign the result to it
+    let resultOptionsPosition = getRandomNum(resultOptions.length - 1) 
+    resultOptions[resultOptionsPosition] = result;
+
+    console.log(resultOptions[resultOptionsPosition]);
+
+    resultOptions.forEach(element => {
+        console.log(`${element}`);
+    })
+
+    return resultOptions;
+}
+
+
+
 // Run level one
 //This level will run for 30 seconds and will
 // call the create equation function with the addition operator
 function playLevelOne(){
     //level one = addition
     let result = createEquation('+');
-    logoPosition();
-
-
-    let heroLogos =  document.querySelectorAll(`.heroLogo`);
     let heroLogosValue =  document.querySelectorAll(`.result`);
+    let answersArr = [];
+    
+    let heroLogos =  document.querySelectorAll(`.heroLogo`);
 
-    heroLogosValue.forEach(element => {
-        element.innerHTML = getRandomNum(25);
-    });
+    //Generate a starting position for each hero logo
+    logoPosition();
+    answersArr = generateAnswers(result);
+    
+    console.log('Hero Values', heroLogos);
 
-
-    for(i = 0; i < heroLogosValue.length; i++){
-        heroLogosValue[i].addEventListener('click', ()=>{
-            alert(heroLogosValue[i]);
-        })
+    //for each hero logo assign a value to it
+    for (let i = 0; i < answersArr.length; i++) {
+        for (let i = 0; i < heroLogosValue.length; i++) {
+        heroLogosValue[i].innerHTML = answersArr[i];
+        }
     }
 
-    // heroLogos.forEach(element => {
+    heroLogos.forEach(element => {
 
-    //     element.addEventListener('click', ()=>{
-    //         alert(heroLogosValue)
-    //     })
-    // });
+        element.addEventListener('click', (e)=>{
+            
+            //retrieve the child class result from heroLogo
+            let value = element.querySelector('.result').innerHTML
+            alert(value);
+            // if(e.target.childNode.querySelector(`.result`)){
+            //     alert(e.target.childNode.querySelector(`.result`).innerHTML);
+            // }
+        })
+    });
+
+    //verify chosen answer
+    //if correct generate new equation
+    // if not correct make option disappear
 }
 
 function getRandomPosition(){
@@ -166,3 +210,7 @@ function main(){
 }
 
 main();
+
+// TODO
+
+// Do not allow duplicate values on hero logos
