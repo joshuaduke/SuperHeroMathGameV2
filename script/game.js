@@ -266,3 +266,21 @@ main();
 // TODO
 
 // Do not allow duplicate values on hero logos
+
+//level 1 timer
+//begin level 2
+
+/*
+
+class Level{
+    constructor(level, timer, operator) {
+        this.level = level;
+        this.level = level;
+        this.level = level;
+    }
+
+}
+
+
+
+*/
