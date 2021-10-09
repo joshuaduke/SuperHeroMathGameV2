@@ -47,6 +47,10 @@ function generateAnswers(result){
 
     console.log(resultOptions[resultOptionsPosition]);
 
+    resultOptions.forEach(element => {
+        console.log(`${element}`);
+    })
+
 }
 
 

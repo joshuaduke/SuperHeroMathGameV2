@@ -16,15 +16,15 @@ let missContainer = document.querySelector(`.miss`);
 let level = 1;
 let time = 0;
 
-// playBtn.addEventListener("click", () => {
-//     if(userName.value == ""){
-//         modalErrorMsg.innerHTML = "Please Enter a User Name"
-//     } else {
-//         detailsModal.style.display = "none";
-//         runCountdown();
-//     }
+playBtn.addEventListener("click", () => {
+    if(userName.value == ""){
+        modalErrorMsg.innerHTML = "Please Enter a User Name"
+    } else {
+        detailsModal.style.display = "none";
+        runCountdown();
+    }
     
-// })
+})
 
 //Return a random number from 1 - 12
 function getRandomNum(num){
@@ -127,7 +127,7 @@ function generateAnswers(result){
     return resultOptions;
 }
 
-function reload(){
+function reload(operator){
     //assign result to a logo
     let heroLogosValue =  document.querySelectorAll(`.result`);
     let heroLogos =  document.querySelectorAll(`.heroLogo`);
@@ -138,24 +138,13 @@ function reload(){
     //what needs to change
     //equation
     //result
-    result = createEquation('+');
+    result = createEquation(operator);
     
     //position
     logoPosition()
     
     //hero values
     answersArr = generateAnswers(result)
-
-    
-    // let answersArr = [];
-    
-
-    
-
-    //Generate a starting position for each hero logo
-    // logoPosition();
-    
-    // answersArr = generateAnswers(result);
     
     console.log('Hero Values', heroLogos);
 
@@ -176,7 +165,76 @@ function reload(){
 function playLevelOne(){
     //level one = addition
     // let result = createEquation('+');
-    result = reload();
+    result = reload('+');
+
+    let heroLogosValue =  document.querySelectorAll(`.result`);
+    // let answersArr = [];
+    
+    let heroLogos =  document.querySelectorAll(`.heroLogo`);
+
+    //Level Timer
+    let timer = document.querySelector(`.timer`);
+
+    let timeleft = 10;
+    let downloadTimer = setInterval(function(){
+        if(timeleft <= 0){
+            clearInterval(downloadTimer);
+            timer.innerHTML = "Go";
+            playLevelTwo();
+            
+        } else {
+            timer.innerHTML = timeleft;
+        }
+        timeleft -= 1;
+    }, 1000);
+
+    heroLogos.forEach(element => {
+
+        element.addEventListener('click', (e)=>{
+            
+            //retrieve the child class result from heroLogo
+            let value = parseInt(element.querySelector('.result').innerHTML)
+
+            //verify chosen answer
+            //if correct generate new equation
+            // if not correct make option disappear
+            if(value === result){
+                console.log("Correct answer")
+                score++;
+                scoreContainer.innerHTML = score;
+                result = reload('+');
+            } else {
+                console.log("false");
+                misses++;
+                missContainer.innerHTML = misses;
+                element.style.display = "none";
+                if(score > 0){
+                    score--; 
+                    scoreContainer.innerHTML = score;
+                }
+            }
+        })
+    });
+}
+
+function playLevelTwo(){
+    result = reload('-');
+
+    //45 second Level Timer
+    //turn timer into a reusable function
+    let timer = document.querySelector(`.timer`);
+
+    let timeleft = 10;
+    let downloadTimer = setInterval(function(){
+        if(timeleft <= 0){
+            clearInterval(downloadTimer);
+            timer.innerHTML = "Go";
+            
+        } else {
+            timer.innerHTML = timeleft;
+        }
+        timeleft -= 1;
+    }, 1000);
 
     let heroLogosValue =  document.querySelectorAll(`.result`);
     // let answersArr = [];
@@ -197,7 +255,7 @@ function playLevelOne(){
                 console.log("Correct answer")
                 score++;
                 scoreContainer.innerHTML = score;
-                result = reload();
+                result = reload('-');
             } else {
                 console.log("false");
                 misses++;
@@ -210,8 +268,6 @@ function playLevelOne(){
             }
         })
     });
-
-
 }
 
 function getRandomPosition(){
@@ -259,6 +315,9 @@ function main(){
 
     //level 1 starts
     playLevelOne();
+
+    //level 2 starts
+    // playLevelTwo();
 }
 
 main();
@@ -266,6 +325,8 @@ main();
 // TODO
 
 // Do not allow duplicate values on hero logos
+//If overflow x then reload the hero logos
+//fix level 2 bug, reload goes back to addition
 
 //level 1 timer
 //begin level 2
