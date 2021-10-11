@@ -1,3 +1,7 @@
+$superBlue : #0176F2;
+$superRed : #FF0100;
+$superYellow : #F3D405;
+
 *{
     margin:0;
     padding:0;
@@ -64,7 +68,7 @@ main{
     padding:10px 20px;
 
     .levels{
-        background-color: yellow;
+        background-color: $superYellow;
         width:200px;
         text-align: center;
         padding:10px;
@@ -91,7 +95,7 @@ main{
     }
 
     button{
-        background-color:red;
+        background-color:$superRed;
         padding:5px 25px;
         color:#fff;
         border:none;
