@@ -16,21 +16,12 @@ let missContainer = document.querySelector(`.miss`);
 let level = 1;
 let time = 0;
 
-playBtn.addEventListener("click", () => {
-    if(userName.value == ""){
-        modalErrorMsg.innerHTML = "Please Enter a User Name"
-    } else {
-        detailsModal.style.display = "none";
-        runCountdown();
-    }
-    
-})
 
-//Return a random number from 1 - 12
+
+//Return a random number from 1 - sepcified
 function getRandomNum(num){
     return Math.floor(Math.random() * num) + 1 ;
 }
-
 
 function createEquation(operator){
     let firstNum;
@@ -77,7 +68,7 @@ function createEquation(operator){
 
 //grey out screen and 3 second countdown before game starts
 //3-2-1 countdown in center page
-function runCountdown(){
+function runCountdown(level){
     let counter = document.querySelector(`.countdown`);
     let counterContainer = document.querySelector(`.countdownContainer`);
     counterContainer.style.display = "block";
@@ -88,6 +79,16 @@ function runCountdown(){
             clearInterval(downloadTimer);
             counter.innerHTML = "Go";
             counterContainer.style.display = "none";
+
+            switch (level) {
+                case 1:
+                    playLevelOne();
+                    break;
+                case 2:
+                    playLevelTwo();
+                    break;
+            }
+            
         } else {
             counter.innerHTML = timeleft;
         }
@@ -146,7 +147,7 @@ function reload(operator){
     //hero values
     answersArr = generateAnswers(result)
     
-    console.log('Hero Values', heroLogos);
+    // console.log('Hero Values', heroLogos);
 
     //for each hero logo assign a value to it
     for (let i = 0; i < answersArr.length; i++) {
@@ -155,6 +156,7 @@ function reload(operator){
         }
     }
 
+    console.log(`RESULT FUNCTION: ${result}`)
     return result;
 }
 
@@ -163,6 +165,7 @@ function reload(operator){
 //This level will run for 30 seconds and will
 // call the create equation function with the addition operator
 function playLevelOne(){
+    console.log("LEVEL1")
     //level one = addition
     // let result = createEquation('+');
     result = reload('+');
@@ -175,13 +178,13 @@ function playLevelOne(){
     //Level Timer
     let timer = document.querySelector(`.timer`);
 
+    //once timer is completed go to the next level
     let timeleft = 10;
     let downloadTimer = setInterval(function(){
         if(timeleft <= 0){
             clearInterval(downloadTimer);
             timer.innerHTML = "Go";
-            playLevelTwo();
-            
+            runCountdown(2);
         } else {
             timer.innerHTML = timeleft;
         }
@@ -218,7 +221,13 @@ function playLevelOne(){
 }
 
 function playLevelTwo(){
+    console.log("LEVEL2")
     result = reload('-');
+
+    let heroLogosValue =  document.querySelectorAll(`.result`);
+    // let answersArr = [];
+    
+    let heroLogos =  document.querySelectorAll(`.heroLogo`);
 
     //45 second Level Timer
     //turn timer into a reusable function
@@ -236,10 +245,7 @@ function playLevelTwo(){
         timeleft -= 1;
     }, 1000);
 
-    let heroLogosValue =  document.querySelectorAll(`.result`);
-    // let answersArr = [];
-    
-    let heroLogos =  document.querySelectorAll(`.heroLogo`);
+
 
     heroLogos.forEach(element => {
 
@@ -311,10 +317,20 @@ function main(){
     //equation and logos are updated
     //hidden logos are set to visible
 
+    playBtn.addEventListener("click", () => {
+        if(userName.value == ""){
+            modalErrorMsg.innerHTML = "Please Enter a User Name"
+        } else {
+            detailsModal.style.display = "none";
+            runCountdown(1);
+        }
+        
+    })
+
     // createEquation('*');
 
     //level 1 starts
-    playLevelOne();
+    // playLevelOne();
 
     //level 2 starts
     // playLevelTwo();
