@@ -77,14 +77,17 @@ function runCountdown(level){
     let downloadTimer = setInterval(function(){
         if(timeleft <= 0){
             clearInterval(downloadTimer);
-            counter.innerHTML = "Go";
+            counter.innerHTML = `Level ${level}`;
+            console.log(`LEVEL ${level}`)
             counterContainer.style.display = "none";
 
             switch (level) {
                 case 1:
+                    console.log(`Playing Level ${level}`)
                     playLevelOne();
                     break;
                 case 2:
+                    console.log(`Playing Level ${level}`)
                     playLevelTwo();
                     break;
             }
@@ -129,6 +132,18 @@ function generateAnswers(result){
 }
 
 function reload(operator){
+    answersArr = [];
+    //what needs to change
+    //equation
+    //result
+    result = createEquation(operator);
+    
+    //generate random position
+    logoPosition()
+    
+    //hero values
+    answersArr = generateAnswers(result)
+    console.log(`Answers Arr ${answersArr}`)
     //assign result to a logo
     let heroLogosValue =  document.querySelectorAll(`.result`);
     let heroLogos =  document.querySelectorAll(`.heroLogo`);
@@ -136,16 +151,7 @@ function reload(operator){
     heroLogos.forEach(element => {
         element.style.display = "block"
     })
-    //what needs to change
-    //equation
-    //result
-    result = createEquation(operator);
-    
-    //position
-    logoPosition()
-    
-    //hero values
-    answersArr = generateAnswers(result)
+
     
     // console.log('Hero Values', heroLogos);
 
@@ -160,12 +166,31 @@ function reload(operator){
     return result;
 }
 
+function clearGame(){
+    let equationBox = document.querySelector(`.equation`);
+    equationBox.textContent = "";
+
+    answersArr = [];
+    result = ""; 
+
+    let heroLogosValue =  document.querySelectorAll(`.result`);
+    let heroLogos =  document.querySelectorAll(`.heroLogo`);
+
+    heroLogos.forEach(element => {
+        element.style.display = "none"
+    })
+
+    heroLogosValue.forEach(element => {
+        element.textContent = ""
+    })
+}
 
 // Run level one
 //This level will run for 30 seconds and will
 // call the create equation function with the addition operator
 function playLevelOne(){
     console.log("LEVEL1")
+    answersArr = [];
     //level one = addition
     // let result = createEquation('+');
     result = reload('+');
@@ -184,7 +209,11 @@ function playLevelOne(){
         if(timeleft <= 0){
             clearInterval(downloadTimer);
             timer.innerHTML = "Go";
+            // runCountdown(2);
+            console.clear()
+            clearGame();
             runCountdown(2);
+            
         } else {
             timer.innerHTML = timeleft;
         }
@@ -197,7 +226,7 @@ function playLevelOne(){
             
             //retrieve the child class result from heroLogo
             let value = parseInt(element.querySelector('.result').innerHTML)
-
+            console.log(e);
             //verify chosen answer
             //if correct generate new equation
             // if not correct make option disappear
@@ -222,6 +251,7 @@ function playLevelOne(){
 
 function playLevelTwo(){
     console.log("LEVEL2")
+    answersArr = [];
     result = reload('-');
 
     let heroLogosValue =  document.querySelectorAll(`.result`);
@@ -231,19 +261,19 @@ function playLevelTwo(){
 
     //45 second Level Timer
     //turn timer into a reusable function
-    let timer = document.querySelector(`.timer`);
+    // let timer = document.querySelector(`.timer`);
 
-    let timeleft = 10;
-    let downloadTimer = setInterval(function(){
-        if(timeleft <= 0){
-            clearInterval(downloadTimer);
-            timer.innerHTML = "Go";
+    // let timeleft = 10;
+    // let downloadTimer = setInterval(function(){
+    //     if(timeleft <= 0){
+    //         clearInterval(downloadTimer);
+    //         timer.innerHTML = "Go";
             
-        } else {
-            timer.innerHTML = timeleft;
-        }
-        timeleft -= 1;
-    }, 1000);
+    //     } else {
+    //         timer.innerHTML = timeleft;
+    //     }
+    //     timeleft -= 1;
+    // }, 1000);
 
 
 
@@ -253,7 +283,7 @@ function playLevelTwo(){
             
             //retrieve the child class result from heroLogo
             let value = parseInt(element.querySelector('.result').innerHTML)
-
+            console.log(`${e}`);
             //verify chosen answer
             //if correct generate new equation
             // if not correct make option disappear
@@ -263,7 +293,7 @@ function playLevelTwo(){
                 scoreContainer.innerHTML = score;
                 result = reload('-');
             } else {
-                console.log("false");
+                console.log(`${value} is the wrong answer, the correct answer is ${result}`);
                 misses++;
                 missContainer.innerHTML = misses;
                 element.style.display = "none";
@@ -322,7 +352,7 @@ function main(){
             modalErrorMsg.innerHTML = "Please Enter a User Name"
         } else {
             detailsModal.style.display = "none";
-            runCountdown(1);
+            runCountdown(2);
         }
         
     })
