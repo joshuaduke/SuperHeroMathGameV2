@@ -17,13 +17,15 @@ let missContainer = document.querySelector(`.miss`);
 let time = 0;
 let count = 0;
 
+let resetTimer = false;
+
 // If username is valid run application
 playBtn.addEventListener("click", () => {
     if(userName.value == ""){
         modalErrorMsg.innerHTML = "Please Enter a User Name"
     } else {
         detailsModal.style.display = "none";
-        main()
+        main();
     }
     
 })
@@ -64,14 +66,18 @@ function createEquation(operator){
         case '/':
             firstNum = getRandomNum(12);
             secondNum = getRandomNum(12);
-            while(firstNum % secondNum != 0){
-                firstNum = getRandomNum();
-                secondNum = getRandomNum();
+            console.log(`Division Firstnum ${firstNum}, secondnum ${secondNum}`);
+            
+            while(firstNum % secondNum !== 0){
+                console.log('inside loop')
+                firstNum = getRandomNum(50);
+                secondNum = getRandomNum(50);
             }
 
+            console.log(`2. Division Firstnum ${firstNum}, secondnum ${secondNum}`);
 
             equationBox.innerHTML = `${firstNum} / ${secondNum}`;
-            return eqResult = firstNum / second;
+            return eqResult = firstNum / secondNum;
 
     }
 }
@@ -81,30 +87,22 @@ function createEquation(operator){
 function runCountdown(currentlevel){
     let counter = document.querySelector(`.countdown`);
     let counterContainer = document.querySelector(`.countdownContainer`);
+    let timeleft = 3;
+
     counterContainer.style.display = "block";
     counter.innerHTML = `Level ${currentlevel}`;
-    let timeleft = 3;
+
     let downloadTimer = setInterval(function(){
         if(timeleft <= 0){
             clearInterval(downloadTimer);
             counter.innerHTML = `Level ${currentlevel}`;
             console.log(`LEVEL ${currentlevel}`)
             counterContainer.style.display = "none";
-
-            // switch (level) {
-            //     case 1:
-            //         console.log(`Playing Level ${currentlevel}`)
-            //         playLevelOne();
-            //         break;
-            //     case 2:
-            //         console.log(`Playing Level ${currentlevel}`)
-            //         playLevelTwo();
-            //         break;
-            // }
             
         } else {
             counter.innerHTML = timeleft;
         }
+
         timeleft -= 1;
     }, 1000);
     
@@ -113,7 +111,6 @@ function runCountdown(currentlevel){
 
 function generateAnswers(result){
     let heroLogosValue =  document.querySelectorAll(`.result`);
-
     //create an array to store values for each hero logo
     let resultOptions = [];
 
@@ -145,28 +142,20 @@ function generateAnswers(result){
 }
 
 function reload(operator){
+    let heroLogosValue =  document.querySelectorAll(`.result`);
+    let heroLogos =  document.querySelectorAll(`.heroLogo`);
     answersArr = [];
-    //what needs to change
-    //equation
-    //result
     result = createEquation(operator);
     
-    //generate random position
     logoPosition()
     
     //hero values
     answersArr = generateAnswers(result)
     console.log(`Answers Arr ${answersArr}`)
-    //assign result to a logo
-    let heroLogosValue =  document.querySelectorAll(`.result`);
-    let heroLogos =  document.querySelectorAll(`.heroLogo`);
 
     heroLogos.forEach(element => {
         element.style.display = "block"
     })
-
-    
-    // console.log('Hero Values', heroLogos);
 
     //for each hero logo assign a value to it
     for (let i = 0; i < answersArr.length; i++) {
@@ -206,24 +195,32 @@ function playLevelOne(){
 
     console.log("LEVEL1")
     answersArr = [];
-    timer(10, 1);
+    // timer(10, 1);
     //level one = addition
-    selectAnwser('+')
+    selectAnwser('/');
 }
 
 function playLevelTwo(){
     runCountdown(2)
-    console.log("LEVEL2")
+    console.log("LEVEL2");
     answersArr = [];
-    // timer(10, 2);
-    selectAnwser('-')
+    timer(10, 2);
+    selectAnwser('-');
 }
 
 function playLevelThree(){
-    runCountdown(3)
-    console.log("LEVEL3")
+    runCountdown(3);
+    console.log("LEVEL3");
     answersArr = [];
-    selectAnwser('*')
+    timer(10, 3);
+    selectAnwser('*');
+}
+
+function playLevelFour(){
+    runCountdown(4);
+    console.log("LEVEL3");
+    answersArr = [];
+    // selectAnwser('/');
 }
 
 function selectAnwser(operator){
@@ -231,9 +228,6 @@ function selectAnwser(operator){
     answersArr = [];
     console.log(`Select Answer result ${result}`);
     let value;
-    let heroLogosValue =  document.querySelectorAll(`.result`);
-    // let answersArr = [];
-    
     let heroLogos =  document.querySelectorAll(`.heroLogo`);
 
 
@@ -259,7 +253,7 @@ function selectAnwser(operator){
                 console.log("Correct answer")
                 score++;
                 scoreContainer.innerHTML = score;
-
+                resetTimer = true;
                 result = reload(operator);
             } else {
                 console.log(`${value} is the wrong answer, the correct answer is ${result}`);
@@ -272,42 +266,11 @@ function selectAnwser(operator){
                 }
             }
         }
-
-        // element.addEventListener('click', (e)=>{
-        //     e.preventDefault();
-        //     count++;
-        //     console.log(`Count ${count}`)
-        //     // //retrieve the child class result from heroLogo
-        //     // value = parseInt(element.querySelector('.result').innerHTML)
-        //     // console.log(e);
-        //     // console.log(`SELECT ANSWER VALUE ${value}`)
-        //     // console.log(`Value ${value} Result ${result}`)
-
-
-        //     // //verify chosen answer
-        //     // //if correct generate new equation
-        //     // // if not correct make option disappear
-        //     // if(value == result){
-        //     //     console.log("Correct answer")
-        //     //     score++;
-        //     //     scoreContainer.innerHTML = score;
-
-        //     //     result = reload(operator);
-        //     // } else {
-        //     //     console.log(`${value} is the wrong answer, the correct answer is ${result}`);
-        //     //     misses++;
-        //     //     missContainer.innerHTML = misses;
-        //     //     element.style.display = "none";
-        //     //     if(score > 0){
-        //     //         score--; 
-        //     //         scoreContainer.innerHTML = score;
-        //     //     }
-        //     // }
-        // })
     });
 }
 
 function logoPosition(){
+
     let heroLogos =  document.querySelectorAll(`.heroLogo`);
     let gameContainer = document.querySelector(`.gameContainer`);
     let top = gameContainer.offsetHeight - 100;
@@ -315,19 +278,26 @@ function logoPosition(){
 
     console.log(gameContainer.offsetHeight);
     console.log(gameContainer.offsetWidth);
-    heroLogos.forEach(element => {
-        element.style.top = getRandomNum(top) + 'px';
-        element.style.left = getRandomNum(left) + 'px';
-    });
+    // heroLogos.forEach(element => {
+    //     element.style.top = getRandomNum(top) + 'px';
+    //     element.style.left = getRandomNum(left) + 'px';
+    // });
     
-    // setInterval( ()=>{
-    //     heroLogos.forEach(element => {
-    //         element.style.top = getRandomNum(top) + 'px';
-    //         element.style.left = getRandomNum(left) + 'px';
-    //     });
-    // }, 3000)
+    let positionTimer = setInterval( ()=>{
+        if(resetTimer){
+            clearInterval(positionTimer)
+            resetTimer = false;
+        } else {
+            heroLogos.forEach(element => {
+                element.style.top = getRandomNum(top) + 'px';
+                element.style.left = getRandomNum(left) + 'px';
+            });
+        }
+        
+    }, 3000)
     
 }
+
 
 function timer(time, level){
     //Level Timer
@@ -343,10 +313,12 @@ function timer(time, level){
             console.clear()
             clearGame();
             
-            if(level == 1){
+            if(level === 1){
                 return playLevelTwo();
-            } else if(level == 2){
-                // return playLevelThree();
+            } else if(level === 2){
+                return playLevelThree();
+            } else if(level === 3){
+                return playLevelFour();
             }
             
             
@@ -384,11 +356,9 @@ function main(){
 // TODO
 
 // Do not allow duplicate values on hero logos
-//If overflow x then reload the hero logos
-//fix level 2 bug, reload goes back to addition
 
-//level 1 timer
-//begin level 2
+//reposition logos every three seconds 
+
 
 /*
 
