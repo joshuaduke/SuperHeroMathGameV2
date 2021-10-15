@@ -84,7 +84,7 @@ function createEquation(operator){
 
 //grey out screen and 3 second countdown before game starts
 //3-2-1 countdown in center page
-function runCountdown(currentlevel){
+function runCountdown(time, currentlevel){
     let counter = document.querySelector(`.countdown`);
     let counterContainer = document.querySelector(`.countdownContainer`);
     let timeleft = 3;
@@ -98,7 +98,7 @@ function runCountdown(currentlevel){
             counter.innerHTML = `Level ${currentlevel}`;
             console.log(`LEVEL ${currentlevel}`)
             counterContainer.style.display = "none";
-            
+            timer(time, currentlevel);
         } else {
             counter.innerHTML = timeleft;
         }
@@ -185,42 +185,44 @@ function clearGame(){
     heroLogosValue.forEach(element => {
         element.textContent = ""
     })
+
+    resetTimer = true;
 }
 
 // Run level one
 //This level will run for 30 seconds and will
 // call the create equation function with the addition operator
 function playLevelOne(){
-    runCountdown(1);
+    runCountdown(10, 1);
 
     console.log("LEVEL1")
     answersArr = [];
-    // timer(10, 1);
+    // timer(15, 1);
     //level one = addition
-    selectAnwser('/');
+    selectAnwser('+');
 }
 
 function playLevelTwo(){
-    runCountdown(2)
+    runCountdown(10, 2)
     console.log("LEVEL2");
     answersArr = [];
-    timer(10, 2);
+    // timer(10, 2);
     selectAnwser('-');
 }
 
 function playLevelThree(){
-    runCountdown(3);
+    runCountdown(15, 3);
     console.log("LEVEL3");
     answersArr = [];
-    timer(10, 3);
+    // timer(10, 3);
     selectAnwser('*');
 }
 
 function playLevelFour(){
-    runCountdown(4);
+    runCountdown(10, 4);
     console.log("LEVEL3");
     answersArr = [];
-    // selectAnwser('/');
+    selectAnwser('/');
 }
 
 function selectAnwser(operator){
@@ -278,10 +280,11 @@ function logoPosition(){
 
     console.log(gameContainer.offsetHeight);
     console.log(gameContainer.offsetWidth);
-    // heroLogos.forEach(element => {
-    //     element.style.top = getRandomNum(top) + 'px';
-    //     element.style.left = getRandomNum(left) + 'px';
-    // });
+    heroLogos.forEach(element => {
+        element.style.display = "block"
+        element.style.top = getRandomNum(top) + 'px';
+        element.style.left = getRandomNum(left) + 'px';
+    });
     
     let positionTimer = setInterval( ()=>{
         if(resetTimer){
@@ -314,6 +317,7 @@ function timer(time, level){
             clearGame();
             
             if(level === 1){
+                
                 return playLevelTwo();
             } else if(level === 2){
                 return playLevelThree();
@@ -356,8 +360,12 @@ function main(){
 // TODO
 
 // Do not allow duplicate values on hero logos
+// local storage
+//  store username and higest score 
+// create results page for end of game
+//game timer needs to wait for countdown timer to finish
 
-//reposition logos every three seconds 
+//3 second logo position for level 3 and level 4 
 
 
 /*
