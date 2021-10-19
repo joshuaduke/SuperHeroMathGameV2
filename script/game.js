@@ -1,42 +1,20 @@
-// retrieve user name value
 let userName = document.getElementById(`userName`);
 let modalErrorMsg = document.querySelector(`.errorMsg`);
-
-//Details Modal
-//display modal where user can enter name
 let playBtn = document.querySelector(`.playBtn`);
 let detailsModal = document.querySelector(`.userDetailsModal`);
-
 let resultsModal = document.querySelector('.resultsModalContainer');
-
 let answersArr = [];
-// let result;
 let score = 0;
 let scoreContainer = document.querySelector(`.score`);
 let misses = 0;
 let missContainer = document.querySelector(`.miss`);
-// let level = 1;
 let time = 0;
 let count = 0;
-
 let localName = "";
 let localHighScore = 0;
-
-let localUserDetails = {
-    localname: localName,
-    highscore: localHighScore
-}
-
 let storeLocal = window.localStorage;
-
-//store username and score in an object for local storage
-// when a new game is played compare the store score with the new score
-// if the new score is bigger than the old score . display highscore div
-//update score that is in the local storage
-
 let resetTimer = false;
 
-// storeLocal.setItem('user', JSON.stringify(localUserDetails));
 if(localStorage.length == 0){
     window.localStorage.setItem('name', localName)
     window.localStorage.setItem('highscore', localHighScore)
@@ -52,15 +30,8 @@ if(playBtn){
             
             modalErrorMsg.innerHTML = "Please Enter a User Name"
         } else {
-            let name = userName.value;
-            // window.localStorage.setItem('name', name);
-            // window.localStorage.setItem('user', JSON.stringify(localUserDetails));
+            // let name = userName.value;
             detailsModal.style.display = "none";
-            // console.log(localStorage)
-            // console.log(window.localStorage.getItem('user'))
-            
-            // console.log(localObj["localname"])
-            // main();
             playLevelOne();
             
         }
@@ -241,7 +212,7 @@ function playLevelOne(){
 }
 
 function playLevelTwo(){
-    runCountdown(2, 2)
+    runCountdown(5, 2)
     console.log("LEVEL2");
     answersArr = [];
     // timer(10, 2);
@@ -249,7 +220,7 @@ function playLevelTwo(){
 }
 
 function playLevelThree(){
-    runCountdown(2, 3);
+    runCountdown(5, 3);
     console.log("LEVEL3");
     answersArr = [];
     // timer(10, 3);
@@ -257,7 +228,7 @@ function playLevelThree(){
 }
 
 function playLevelFour(){
-    runCountdown(2, 4);
+    runCountdown(5, 4);
     console.log("LEVEL3");
     answersArr = [];
     selectAnwser('/');
@@ -269,6 +240,7 @@ function displayResults(){
     let userDetails = document.querySelector('.userDetails');
     let highScoreName = document.querySelector('.highScoreName');
     let highScoreNum = document.querySelector('.highScoreNum');
+    let newHighscore = document.querySelector('.newHighscore');
 
 
     finalScore.innerHTML = score;
@@ -281,11 +253,7 @@ function displayResults(){
 
     console.log(`Final Score: ${score}, High Score: ${storeLocal.getItem('highscore')}`)
     if(score > storeLocal.getItem('highscore') && storeLocal.getItem('highscore') !== null){
-        alert("New High SCORE")
-        // localUserDetails["localname"] = userName;
-        // localUserDetails["highscore"] = finalScore;
-
-        // storeLocal.setItem('user', JSON.stringify(localUserDetails));
+        newHighscore.style.display = "block"
         window.localStorage.setItem('name', userName.value)
         window.localStorage.setItem('highscore', score)
         console.log(localStorage)
@@ -382,7 +350,7 @@ function timer(time, level){
     let downloadTimer = setInterval(function(){
         if(timeleft <= 0){
             clearInterval(downloadTimer);
-            timer.innerHTML = "Go";
+            timer.innerHTML = "-";
 
             console.clear()
             clearGame();
@@ -406,52 +374,8 @@ function timer(time, level){
     }, 1000);
 }
 
-// function main(){
-//     //display equation and results on logos
-//     //game timer starts
-//     //images move independently
-//     //if correct answer display new equation
-//     //if answer not right add to misses
-//     //set clicked logo to hidden
-
-//     //when timer runs out
-//     //level 2 begins
-//     //equation and logos are updated
-//     //hidden logos are set to visible
-
-
-//     // createEquation('*');
-
-//     //level 1 starts
-//     playLevelOne();
-
-//     //level 2 starts
-//     // startLevelTwo();
-// }
-
-
 // TODO
 
 // Do not allow duplicate values on hero logos
-// local storage
-//  store username and higest score 
-// create results page for end of game
-//game timer needs to wait for countdown timer to finish
-
-//3 second logo position for level 3 and level 4 
-
-
-/*
-
-class Level{
-    constructor(level, timer, operator) {
-        this.level = level;
-        this.level = level;
-        this.level = level;
-    }
-
-}
-
-
-
-*/
+//3 second logo position for level 3 and level 4
+// improve upon styles

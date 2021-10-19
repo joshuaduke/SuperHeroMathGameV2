@@ -90,7 +90,7 @@ header .equationBox {
   margin: 20px 0;
 }
 
-.resultsModalContainer {
+.resultsModalContainer, .newHighscore {
   display: none;
 }
 
