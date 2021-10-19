@@ -7,6 +7,8 @@ let modalErrorMsg = document.querySelector(`.errorMsg`);
 let playBtn = document.querySelector(`.playBtn`);
 let detailsModal = document.querySelector(`.userDetailsModal`);
 
+let resultsModal = document.querySelector('.resultsModalContainer');
+
 let answersArr = [];
 // let result;
 let score = 0;
@@ -17,18 +19,55 @@ let missContainer = document.querySelector(`.miss`);
 let time = 0;
 let count = 0;
 
+let localName = "";
+let localHighScore = 0;
+
+let localUserDetails = {
+    localname: localName,
+    highscore: localHighScore
+}
+
+let storeLocal = window.localStorage;
+
+//store username and score in an object for local storage
+// when a new game is played compare the store score with the new score
+// if the new score is bigger than the old score . display highscore div
+//update score that is in the local storage
+
 let resetTimer = false;
 
+// storeLocal.setItem('user', JSON.stringify(localUserDetails));
+if(localStorage.length == 0){
+    window.localStorage.setItem('name', localName)
+    window.localStorage.setItem('highscore', localHighScore)
+}
+
+
 // If username is valid run application
-playBtn.addEventListener("click", () => {
-    if(userName.value == ""){
-        modalErrorMsg.innerHTML = "Please Enter a User Name"
-    } else {
-        detailsModal.style.display = "none";
-        main();
-    }
-    
-})
+//remove if statement if not using results page
+if(playBtn){
+
+    playBtn.addEventListener("click", () => {
+        if(userName.value == ""){
+            
+            modalErrorMsg.innerHTML = "Please Enter a User Name"
+        } else {
+            let name = userName.value;
+            // window.localStorage.setItem('name', name);
+            // window.localStorage.setItem('user', JSON.stringify(localUserDetails));
+            detailsModal.style.display = "none";
+            // console.log(localStorage)
+            // console.log(window.localStorage.getItem('user'))
+            
+            // console.log(localObj["localname"])
+            // main();
+            playLevelOne();
+            
+        }
+        
+    })
+}
+
 
 //Return a random number from 1 - sepcified
 function getRandomNum(num){
@@ -188,12 +227,11 @@ function clearGame(){
 
     resetTimer = true;
 }
-
 // Run level one
 //This level will run for 30 seconds and will
 // call the create equation function with the addition operator
 function playLevelOne(){
-    runCountdown(10, 1);
+    runCountdown(5, 1);
 
     console.log("LEVEL1")
     answersArr = [];
@@ -203,7 +241,7 @@ function playLevelOne(){
 }
 
 function playLevelTwo(){
-    runCountdown(10, 2)
+    runCountdown(2, 2)
     console.log("LEVEL2");
     answersArr = [];
     // timer(10, 2);
@@ -211,7 +249,7 @@ function playLevelTwo(){
 }
 
 function playLevelThree(){
-    runCountdown(15, 3);
+    runCountdown(2, 3);
     console.log("LEVEL3");
     answersArr = [];
     // timer(10, 3);
@@ -219,10 +257,43 @@ function playLevelThree(){
 }
 
 function playLevelFour(){
-    runCountdown(10, 4);
+    runCountdown(2, 4);
     console.log("LEVEL3");
     answersArr = [];
     selectAnwser('/');
+}
+
+function displayResults(){
+    let finalScore = document.querySelector('.finalScore');
+    let finalMisses = document.querySelector('.finalMisses')
+    let userDetails = document.querySelector('.userDetails');
+    let highScoreName = document.querySelector('.highScoreName');
+    let highScoreNum = document.querySelector('.highScoreNum');
+
+
+    finalScore.innerHTML = score;
+    userDetails.innerHTML = userName.value;
+    finalMisses.innerHTML = misses;
+    highScoreName.innerHTML =  storeLocal.getItem('name');
+    highScoreNum.innerHTML = storeLocal.getItem('highscore');
+    resultsModal.style.display = 'block'
+
+
+    console.log(`Final Score: ${score}, High Score: ${storeLocal.getItem('highscore')}`)
+    if(score > storeLocal.getItem('highscore') && storeLocal.getItem('highscore') !== null){
+        alert("New High SCORE")
+        // localUserDetails["localname"] = userName;
+        // localUserDetails["highscore"] = finalScore;
+
+        // storeLocal.setItem('user', JSON.stringify(localUserDetails));
+        window.localStorage.setItem('name', userName.value)
+        window.localStorage.setItem('highscore', score)
+        console.log(localStorage)
+    } else {
+        alert("Try Again")
+    }
+
+    
 }
 
 function selectAnwser(operator){
@@ -323,6 +394,8 @@ function timer(time, level){
                 return playLevelThree();
             } else if(level === 3){
                 return playLevelFour();
+            } else if (level === 4){
+                return displayResults();
             }
             
             
@@ -333,28 +406,28 @@ function timer(time, level){
     }, 1000);
 }
 
-function main(){
-    //display equation and results on logos
-    //game timer starts
-    //images move independently
-    //if correct answer display new equation
-    //if answer not right add to misses
-    //set clicked logo to hidden
+// function main(){
+//     //display equation and results on logos
+//     //game timer starts
+//     //images move independently
+//     //if correct answer display new equation
+//     //if answer not right add to misses
+//     //set clicked logo to hidden
 
-    //when timer runs out
-    //level 2 begins
-    //equation and logos are updated
-    //hidden logos are set to visible
+//     //when timer runs out
+//     //level 2 begins
+//     //equation and logos are updated
+//     //hidden logos are set to visible
 
 
-    // createEquation('*');
+//     // createEquation('*');
 
-    //level 1 starts
-    playLevelOne();
+//     //level 1 starts
+//     playLevelOne();
 
-    //level 2 starts
-    // startLevelTwo();
-}
+//     //level 2 starts
+//     // startLevelTwo();
+// }
 
 
 // TODO

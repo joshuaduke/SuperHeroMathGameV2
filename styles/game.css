@@ -40,7 +40,7 @@ header .equationBox {
   padding: 10px;
 }
 
-.userDetailsModal {
+.userDetailsModal, .resultsModalContainer {
   position: fixed;
   top: 0;
   left: 0;
@@ -53,7 +53,7 @@ header .equationBox {
   z-index: 1000;
 }
 
-.userDetailsModal .userDetailsModalContent {
+.userDetailsModal .userDetailsModalContent, .userDetailsModal .resultsModal, .resultsModalContainer .userDetailsModalContent, .resultsModalContainer .resultsModal {
   width: 35%;
   background-color: blue;
   padding: 20px 50px;
@@ -61,33 +61,37 @@ header .equationBox {
   border: 5px solid red;
 }
 
-.userDetailsModal .userDetailsModalContent h3, .userDetailsModal .userDetailsModalContent label, .userDetailsModal .userDetailsModalContent button {
+.userDetailsModal .userDetailsModalContent h3, .userDetailsModal .userDetailsModalContent label, .userDetailsModal .userDetailsModalContent button, .userDetailsModal .resultsModal h3, .userDetailsModal .resultsModal label, .userDetailsModal .resultsModal button, .resultsModalContainer .userDetailsModalContent h3, .resultsModalContainer .userDetailsModalContent label, .resultsModalContainer .userDetailsModalContent button, .resultsModalContainer .resultsModal h3, .resultsModalContainer .resultsModal label, .resultsModalContainer .resultsModal button {
   color: #fff;
   text-align: center;
   letter-spacing: 2px;
   margin: 20px auto;
 }
 
-.userDetailsModal .userDetailsModalContent input {
+.userDetailsModal .userDetailsModalContent input, .userDetailsModal .resultsModal input, .resultsModalContainer .userDetailsModalContent input, .resultsModalContainer .resultsModal input {
   padding: 5px 10px;
 }
 
-.userDetailsModal .userDetailsModalContent input:focus {
+.userDetailsModal .userDetailsModalContent input:focus, .userDetailsModal .resultsModal input:focus, .resultsModalContainer .userDetailsModalContent input:focus, .resultsModalContainer .resultsModal input:focus {
   outline: none;
 }
 
-.userDetailsModal .userDetailsModalContent button {
+.userDetailsModal .userDetailsModalContent button, .userDetailsModal .resultsModal button, .resultsModalContainer .userDetailsModalContent button, .resultsModalContainer .resultsModal button {
   display: block;
   color: #000;
   padding: 10px 20px;
   cursor: pointer;
 }
 
-.userDetailsModal .userDetailsModalContent p {
+.userDetailsModal .userDetailsModalContent p, .userDetailsModal .resultsModal p, .resultsModalContainer .userDetailsModalContent p, .resultsModalContainer .resultsModal p {
   text-align: center;
   font-size: 1.2em;
-  color: red;
+  color: #fff;
   margin: 20px 0;
+}
+
+.resultsModalContainer {
+  display: none;
 }
 
 .countdownContainer {

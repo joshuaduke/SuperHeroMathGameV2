@@ -44,7 +44,7 @@ header{
     }
 }
 
-.userDetailsModal{
+.userDetailsModal, .resultsModalContainer{
     // display: none;
 
 
@@ -61,7 +61,7 @@ header{
     // transform:translate(-50%, -50%);
     z-index: 1000;
 
-    .userDetailsModalContent{
+    .userDetailsModalContent, .resultsModal{
         //div fit the content
         // display: inline-block;
         width:35%;
@@ -94,10 +94,14 @@ header{
         p{
             text-align: center;
             font-size:1.2em;
-            color:red;
+            color:#fff;
             margin:20px 0;
         }
     }
+}
+
+.resultsModalContainer{
+    display: none;
 }
 
 .countdownContainer{
