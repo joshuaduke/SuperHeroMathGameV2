@@ -52,7 +52,12 @@ header{
     .navIcons{
         grid-area: icons;
         text-align: right;
+        display: inline-block;
 
+        .toggleDarkMode{
+            display: inline-block;
+        }
+        
         i{
             font-size: 1.3em;
             margin:0 5px;

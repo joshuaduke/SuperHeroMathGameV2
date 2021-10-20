@@ -1,3 +1,7 @@
+let isDcHero = true;
+let isMarvelHero = false;
+let isDcVillain = false;
+let isMarvelVillain = false;
 
 function generateAnswers(result){
     let heroLogosValue =  document.querySelectorAll(`.result`);
@@ -29,10 +33,10 @@ function generateAnswers(result){
 }
 
 let logoContainer = document.querySelector('.navLogo');
-logoContainer.addEventListener('click', displayMarvel)
+logoContainer.addEventListener('click', swapCharacters);
 
 
-function displayMarvel(){
+function swapCharacters(e){
 
     let dcLogo = document.querySelector('.dcLogo');
     let marvelLogo = document.querySelector('.marvelLogo');
@@ -43,7 +47,28 @@ function displayMarvel(){
     marvelLogo.classList.toggle('hide')
     dcHeroes.classList.toggle('hide')
     marvelHeroes.classList.toggle('hide')
-    // alert('hello');
+
+    console.log(e.target)
+
+    if(e.target.getAttribute('class') == 'dcLogo'){
+        console.log('Switching to marvel');
+        isDcHero = false;
+    } else if (e.target.getAttribute('class') == 'marvelLogo'){
+        console.log('Switching to DC');
+        isMarvelHero = true;
+    }
+    
+}
+
+let toggleDarkMode = document.querySelector('.toggleDarkMode');
+toggleDarkMode.addEventListener('click', darkMode);
+
+function darkMode(){
+    let lightMode = document.querySelector('.lightMode');
+    let darkMode = document.querySelector('.darkMode');
+
+    darkMode.classList.toggle('hide')
+    lightMode.classList.toggle('hide')
 
 }
 

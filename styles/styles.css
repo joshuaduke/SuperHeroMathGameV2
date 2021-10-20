@@ -51,6 +51,11 @@ header nav .navIcons {
   -ms-grid-column: 3;
   grid-area: icons;
   text-align: right;
+  display: inline-block;
+}
+
+header nav .navIcons .toggleDarkMode {
+  display: inline-block;
 }
 
 header nav .navIcons i {
