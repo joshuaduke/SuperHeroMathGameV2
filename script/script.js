@@ -1,29 +1,4 @@
 
-//Make Rules appear
-
-let rulesBtn = document.querySelector(`.rules`);
-let rulesModal = document.querySelector(`.gameRules`)
-
-rulesBtn.addEventListener("click", () => {
-    rulesModal.style.visibility = "visible"
-})
-
-//close rules
-
-let close = document.querySelector(`.close`)
-
-close.addEventListener("click", ()=>{
-    rulesModal.style.visibility = "hidden";
-})
-
-// Exit modal when user clicks anywhere outisde of it.
-window.onclick = (e) => {
-    if(e.target == rulesModal) {
-        rulesModal.style.visibility = "hidden";
-    }
-}
-
-
 function generateAnswers(result){
     let heroLogosValue =  document.querySelectorAll(`.result`);
 
@@ -53,8 +28,51 @@ function generateAnswers(result){
 
 }
 
+let logoContainer = document.querySelector('.navLogo');
+logoContainer.addEventListener('click', displayMarvel)
+
+
+function displayMarvel(){
+
+    let dcLogo = document.querySelector('.dcLogo');
+    let marvelLogo = document.querySelector('.marvelLogo');
+    let dcHeroes = document.querySelector('.dcHeroes')
+    let marvelHeroes = document.querySelector('.marvelHeroes')
+
+    dcLogo.classList.toggle('hide')
+    marvelLogo.classList.toggle('hide')
+    dcHeroes.classList.toggle('hide')
+    marvelHeroes.classList.toggle('hide')
+    // alert('hello');
+
+}
+
 
 
 function main(){
+//Make Rules appear
 
+    let rulesBtn = document.querySelector(`.rules`);
+    let rulesModal = document.querySelector(`.gameRules`)
+
+    rulesBtn.addEventListener("click", () => {
+        rulesModal.style.visibility = "visible"
+    })
+
+    //close rules
+
+    let close = document.querySelector(`.close`)
+
+    close.addEventListener("click", ()=>{
+        rulesModal.style.visibility = "hidden";
+    })
+
+    // Exit modal when user clicks anywhere outisde of it.
+    window.onclick = (e) => {
+        if(e.target == rulesModal) {
+            rulesModal.style.visibility = "hidden";
+        }
+    }
 }
+
+main();

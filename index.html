@@ -6,13 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SuperHero Math Game</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
             <div class="navLogo">
                 <a href="#">
-                    <img src="/images/DC/dcLogo.png" alt="DC Comics Logo">
+                    <div class="dcLogo">
+                        <img src="/images/DC/dcLogo.png" alt="DC Comics Logo">
+                    </div>
+                    <div class="marvelLogo hide">
+                        <img src="/images/Marvel/MarvelLogo.svg" alt="DC Comics Logo">
+                    </div>
+                    
                 </a>
 
                 <figcaption>Click Here to change to Marvel</figcaption>
@@ -57,28 +66,59 @@
         </section>
 
         <section class="characters">
-            <div class="heroes char1">
-                <img src="/images/DC/batman.png" alt="The batman">
+            
+            <div class="dcHeroes characterContainer">
+                <div class="heroes char1">
+                    <img src="/images/DC/batman.png" alt="The batman">
+                </div>
+    
+                <div class="myBtns ">
+                    <a href="/pages/game.html">
+                        <button class="start">Start</button>
+                    </a>
+                    
+                </div>
+    
+                <div class="heroes char3">
+                    <img src="/images/DC/superman.png" alt="Superman">
+                </div>
+    
+                <div class="myBtns">
+                    <button class="rules">Rules</button>
+                </div>
+    
+                <div class="heroes char2">
+                    <img src="/images/DC/wonder-woman.png" alt="Wonder Woman">
+                </div>
             </div>
 
-            <div class="myBtns ">
-                <a href="/pages/game.html">
-                    <button class="start">Start</button>
-                </a>
-                
+            <div class="marvelHeroes characterContainer hide">
+                <div class="heroes char4">
+                    <img src="/images/Marvel/bp.png" alt="Black Panther">
+                </div>
+    
+                <div class="myBtns ">
+                    <a href="/pages/game.html">
+                        <button class="start">Start</button>
+                    </a>
+                    
+                </div>
+    
+                <div class="heroes char5">
+                    <img src="/images/Marvel/spiderman.png" alt="Spider-man">
+                </div>
+    
+                <div class="myBtns">
+                    <button class="rules">Rules</button>
+                </div>
+    
+                <div class="heroes char6">
+                    <img src="/images/Marvel/ironman.png" alt="Ironman">
+                </div>
             </div>
 
-            <div class="heroes char2">
-                <img src="/images/DC/wonder-woman.png" alt="Wonder Woman">
-            </div>
 
-            <div class="myBtns">
-                <button class="rules">Rules</button>
-            </div>
 
-            <div class="heroes char3">
-                <img src="/images/DC/superman.png" alt="Superman">
-            </div>
         </section>
 
     </main>

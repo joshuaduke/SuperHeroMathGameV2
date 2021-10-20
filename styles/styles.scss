@@ -2,11 +2,21 @@ $superBlue : #0176F2;
 $superRed : #FF0100;
 $superYellow : #F3D405;
 
+%mySpacing{
+    padding:50px 50px 0 50px;
+}
+
 *{
     margin:0;
     padding:0;
     line-height:1.4rem;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+p{
+    font-weight: 700;
+    opacity: 0.7;
 }
 
 a{
@@ -21,34 +31,51 @@ header{
     width:100%;
 
     nav{
-        padding:20px;
+        @extend %mySpacing;
         display:grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 2fr 1fr;
         grid-template-areas: "logo title icons";
-    
-    .navLogo{
-        grid-area: logo;
-        text-align: left;
-        figcaption{
-            font-size: 12px;
-        }
-    }
-
+        
     .navTitle{
         grid-area: title;
         color:red;
         text-align: center;
+        letter-spacing: 1px;
+
+        h1{
+            font-size: 2em;
+            line-height: 1.5em;
+        }
+        
     }
 
     .navIcons{
         grid-area: icons;
         text-align: right;
+
+        i{
+            font-size: 1.3em;
+            margin:0 5px;
+        }
     }
 
     img{
         width:150px;
     }
     }
+}
+
+.navLogo{
+    grid-area: logo;
+    text-align: left;
+
+    figcaption{
+        font-size: 12px;
+    }
+
+    // .marvelLogo{
+    //     display: none;
+    // }
 }
 
 /* LEVELS */
@@ -79,19 +106,21 @@ main{
 
 /* CHARACTERS */
 
-.characters{
+.characterContainer{
     display:grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-areas: "char1  start char2 rules char3";
     align-items: center;
     justify-items: center;
+    padding:0 20px;
 
     .heroes{
         // text-align: center;
+        width:auto;
     }
 
     img{
-        width:350px;
+        width:300px;
     }
 
     button{
@@ -114,8 +143,43 @@ main{
 
     .rules{
         grid-area: rules;
-
     }
+
+    .char1{
+        text-align: left;
+    }
+
+    .char2{
+        text-align: center;
+        img{
+            width: 250px;
+            
+        }
+    }
+
+    .char3{
+        margin-right: 50px;
+
+        img{
+            width: 400px;
+        }
+    }
+
+    .char4{}
+
+    .char5{
+        img{
+            width: 400px;
+        }
+    }
+
+    .char6{
+        text-align: right;
+        img{
+            width: 240px;
+        }
+    }
+
 }
 
 
@@ -164,5 +228,9 @@ main{
 }
 
 .show{
-    visibility:visible ;
+   display: block;
+}
+
+.hide{
+    display: none;
 }

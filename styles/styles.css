@@ -1,9 +1,19 @@
+header nav {
+  padding: 50px 50px 0 50px;
+}
+
 * {
   margin: 0;
   padding: 0;
   line-height: 1.4rem;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+p {
+  font-weight: 700;
+  opacity: 0.7;
 }
 
 a {
@@ -15,23 +25,11 @@ header {
 }
 
 header nav {
-  padding: 20px;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-columns: 1fr 2fr 1fr;
+      grid-template-columns: 1fr 2fr 1fr;
       grid-template-areas: "logo title icons";
-}
-
-header nav .navLogo {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  grid-area: logo;
-  text-align: left;
-}
-
-header nav .navLogo figcaption {
-  font-size: 12px;
 }
 
 header nav .navTitle {
@@ -40,6 +38,12 @@ header nav .navTitle {
   grid-area: title;
   color: red;
   text-align: center;
+  letter-spacing: 1px;
+}
+
+header nav .navTitle h1 {
+  font-size: 2em;
+  line-height: 1.5em;
 }
 
 header nav .navIcons {
@@ -49,8 +53,24 @@ header nav .navIcons {
   text-align: right;
 }
 
+header nav .navIcons i {
+  font-size: 1.3em;
+  margin: 0 5px;
+}
+
 header nav img {
   width: 150px;
+}
+
+.navLogo {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: logo;
+  text-align: left;
+}
+
+.navLogo figcaption {
+  font-size: 12px;
 }
 
 /* LEVELS */
@@ -81,7 +101,7 @@ main h2 {
 }
 
 /* CHARACTERS */
-.characters {
+.characterContainer {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[5];
@@ -91,13 +111,18 @@ main h2 {
       -ms-flex-align: center;
           align-items: center;
   justify-items: center;
+  padding: 0 20px;
 }
 
-.characters img {
-  width: 350px;
+.characterContainer .heroes {
+  width: auto;
 }
 
-.characters button {
+.characterContainer img {
+  width: 300px;
+}
+
+.characterContainer button {
   background-color: #FF0100;
   padding: 5px 25px;
   color: #fff;
@@ -110,16 +135,48 @@ main h2 {
   cursor: pointer;
 }
 
-.characters .start {
+.characterContainer .start {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: start;
 }
 
-.characters .rules {
+.characterContainer .rules {
   -ms-grid-row: 1;
   -ms-grid-column: 4;
   grid-area: rules;
+}
+
+.characterContainer .char1 {
+  text-align: left;
+}
+
+.characterContainer .char2 {
+  text-align: center;
+}
+
+.characterContainer .char2 img {
+  width: 250px;
+}
+
+.characterContainer .char3 {
+  margin-right: 50px;
+}
+
+.characterContainer .char3 img {
+  width: 400px;
+}
+
+.characterContainer .char5 img {
+  width: 400px;
+}
+
+.characterContainer .char6 {
+  text-align: right;
+}
+
+.characterContainer .char6 img {
+  width: 240px;
 }
 
 /* GAME RULES */
@@ -161,6 +218,10 @@ main h2 {
 }
 
 .show {
-  visibility: visible;
+  display: block;
+}
+
+.hide {
+  display: none;
 }
 /*# sourceMappingURL=styles.css.map */
