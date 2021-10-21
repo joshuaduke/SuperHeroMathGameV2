@@ -184,14 +184,6 @@ main h2 {
   width: 240px;
 }
 
-.characterContainer .char7 img {
-  width: 240px;
-}
-
-.characterContainer .char8 img {
-  width: 240px;
-}
-
 /* GAME RULES */
 .gameRules {
   visibility: hidden;
@@ -237,4 +229,4 @@ main h2 {
 .hide {
   display: none;
 }
-/*# sourceMappingURL=styles.css.map */
+/*# sourceMappingURL=dark-theme.css.map */

@@ -2,6 +2,9 @@ let isDcHero = true;
 let isMarvelHero = false;
 let isDcVillain = false;
 let isMarvelVillain = false;
+let dcHeroes = document.querySelector('.dcHeroes');
+let dcVillains = document.querySelector('.dcVillains');
+let marvelHeroes = document.querySelector('.marvelHeroes');
 
 function generateAnswers(result){
     let heroLogosValue =  document.querySelectorAll(`.result`);
@@ -40,12 +43,13 @@ function swapCharacters(e){
 
     let dcLogo = document.querySelector('.dcLogo');
     let marvelLogo = document.querySelector('.marvelLogo');
-    let dcHeroes = document.querySelector('.dcHeroes')
-    let marvelHeroes = document.querySelector('.marvelHeroes')
+
+    let figSpan = document.querySelector('.figSpan')
 
     dcLogo.classList.toggle('hide')
     marvelLogo.classList.toggle('hide')
     dcHeroes.classList.toggle('hide')
+    dcVillains.classList.toggle('hide')
     marvelHeroes.classList.toggle('hide')
 
     console.log(e.target)
@@ -53,9 +57,13 @@ function swapCharacters(e){
     if(e.target.getAttribute('class') == 'dcLogo'){
         console.log('Switching to marvel');
         isDcHero = false;
+        isMarvelHero = true;
+        figSpan.textContent = 'DC';
     } else if (e.target.getAttribute('class') == 'marvelLogo'){
         console.log('Switching to DC');
-        isMarvelHero = true;
+        isDcHero = true;
+        isMarvelHero = false;
+        figSpan.textContent = 'Marvel';
     }
     
 }
@@ -64,11 +72,23 @@ let toggleDarkMode = document.querySelector('.toggleDarkMode');
 toggleDarkMode.addEventListener('click', darkMode);
 
 function darkMode(){
+    console.log(`DC STATUS ${isDcHero}`);
+    console.log(`mARVEL STATUS ${isMarvelHero}`);
     let lightMode = document.querySelector('.lightMode');
     let darkMode = document.querySelector('.darkMode');
 
-    darkMode.classList.toggle('hide')
-    lightMode.classList.toggle('hide')
+    // darkMode.classList.toggle('hide')
+    // lightMode.classList.toggle('hide')
+
+    if(isDcHero){
+        isDcVillain = true;
+        dcHeroes.classList.toggle('hide');
+        dcVillains.classList.toggle('hide');
+        alert('DC');
+    } else if(isMarvelHero){
+        isMarvelHero = true;
+        alert('Marvel')
+    }
 
 }
 

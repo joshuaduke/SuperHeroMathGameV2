@@ -27,6 +27,10 @@ body{
     // background-color:#0176F2;
 }
 
+// .lightStyles{
+
+// }
+
 header{
     width:100%;
 
@@ -57,7 +61,7 @@ header{
         .toggleDarkMode{
             display: inline-block;
         }
-        
+
         i{
             font-size: 1.3em;
             margin:0 5px;
@@ -182,6 +186,18 @@ main{
         text-align: right;
         img{
             width: 240px;
+        }
+    }
+
+    .char7{
+        img{
+            width:240px;
+        }
+    }
+
+    .char8{
+        img{
+            width:240px;
         }
     }
 
