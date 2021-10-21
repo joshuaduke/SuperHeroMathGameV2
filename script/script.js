@@ -152,13 +152,15 @@ function darkMode(){
 function main(){
 //Make Rules appear
 logStatus();
-    let rulesBtn = document.querySelector(`.rules`);
+    let rulesBtn = document.querySelectorAll(`.rules`);
     let rulesModal = document.querySelector(`.gameRules`)
 
-    rulesBtn.addEventListener("click", () => {
-        rulesModal.style.visibility = "visible"
+    rulesBtn.forEach(ruleBtn => {
+        ruleBtn.addEventListener("click", () => {
+            rulesModal.style.visibility = "visible"
+        })
     })
-
+    
     //close rules
 
     let close = document.querySelector(`.close`)
