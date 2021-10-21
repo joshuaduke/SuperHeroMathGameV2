@@ -95,17 +95,11 @@ function swapCharacters(e){
 
     // console.log(e.target)
 
-    // if(e.target.getAttribute('class') == 'dcLogo'){
-    //     console.log('Switching to marvel');
-    //     isDcHero = false;
-    //     isMarvelHero = true;
-    //     figSpan.textContent = 'DC';
-    // } else if (e.target.getAttribute('class') == 'marvelLogo'){
-    //     console.log('Switching to DC');
-    //     isDcHero = true;
-    //     isMarvelHero = false;
-    //     figSpan.textContent = 'Marvel';
-    // }
+    if(e.target.getAttribute('class') == 'dcLogo'){
+        figSpan.textContent = 'DC';
+    } else if (e.target.getAttribute('class') == 'marvelLogo'){
+        figSpan.textContent = 'Marvel';
+    }
     
 }
 

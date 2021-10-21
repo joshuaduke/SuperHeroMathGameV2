@@ -1,5 +1,5 @@
 header nav {
-  padding: 50px 50px 0 50px;
+  padding: 40px 50px 0 50px;
 }
 
 * {
@@ -20,6 +20,18 @@ a {
   text-decoration: none;
 }
 
+body {
+  background-color: #669BBC;
+}
+
+.fa-moon {
+  color: #291720;
+}
+
+.fa-sun {
+  color: #F3D405;
+}
+
 header {
   width: 100%;
 }
@@ -36,14 +48,15 @@ header nav .navTitle {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: title;
-  color: red;
   text-align: center;
   letter-spacing: 1px;
 }
 
 header nav .navTitle h1 {
+  color: #F3D405;
   font-size: 2em;
   line-height: 1.5em;
+  text-shadow: 3px 3px 3px #cc0100;
 }
 
 header nav .navIcons {
@@ -56,10 +69,11 @@ header nav .navIcons {
 
 header nav .navIcons .toggleDarkMode {
   display: inline-block;
+  cursor: pointer;
 }
 
 header nav .navIcons i {
-  font-size: 1.3em;
+  font-size: 1.5em;
   margin: 0 5px;
 }
 
@@ -75,7 +89,9 @@ header nav img {
 }
 
 .navLogo figcaption {
+  color: black;
   font-size: 12px;
+  font-weight: 700;
 }
 
 /* LEVELS */
@@ -83,22 +99,19 @@ main {
   z-index: 0;
 }
 
-main h2 {
-  text-align: center;
-}
-
 .levelContainer {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[4];
       grid-template-columns: repeat(4, 1fr);
-      grid-template-areas: "logo title icons";
   grid-gap: 10px;
-  padding: 10px 20px;
+  padding: 20px 20px;
 }
 
 .levelContainer .levels {
   background-color: #F3D405;
+  border: 5px solid #cc0100;
+  border-radius: 5px;
   width: 200px;
   text-align: center;
   padding: 10px;
@@ -128,7 +141,8 @@ main h2 {
 }
 
 .characterContainer button {
-  background-color: #FF0100;
+  background-color: #cc0100;
+  border-radius: 5px;
   padding: 5px 25px;
   color: #fff;
   border: none;
@@ -203,24 +217,24 @@ main h2 {
   height: 100%;
   background-color: black;
   /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.7);
   /* Black w/ opacity */
 }
 
 .gameRules div {
-  width: 35%;
+  width: 45%;
   margin: 35vh auto;
-  background-color: blue;
+  background-color: #669BBC;
   padding: 30px 100px;
   border: 5px solid red;
 }
 
 .gameRules div p, .gameRules div h3, .gameRules div .close {
-  color: #fff;
+  color: black;
 }
 
 .gameRules div p {
-  margin: 5px 0;
+  margin: 10px 0;
 }
 
 .gameRules div .close {
@@ -236,5 +250,82 @@ main h2 {
 
 .hide {
   display: none;
+}
+
+@media (max-width: 1250px) {
+  .gameRules div {
+    width: 55%;
+  }
+  .levelContainer {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+  .characterContainer {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
+  .char1, .char2, .char4, .char6, .char7, .char9, .char10, .char12 {
+    display: none;
+  }
+  .rules {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+  button {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+}
+
+@media (max-width: 860px) {
+  .gameRules div {
+    width: 80%;
+    padding: 30px 20px;
+  }
+  .gameRules div .close {
+    left: 90%;
+    bottom: 20px;
+  }
+  .levelContainer {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+  header nav {
+    padding: 20px;
+    -ms-grid-columns: 1fr 3fr .5fr;
+        grid-template-columns: 1fr 3fr .5fr;
+  }
+  header nav .navTitle h1 {
+    font-size: 1.5em;
+  }
+  .toggleDarkMode {
+    margin-top: 7px;
+  }
+  .navLogo img {
+    width: 100px;
+  }
+  .characterContainer {
+    -ms-grid-columns: 3fr;
+        grid-template-columns: 3fr;
+        grid-template-areas: 'char';
+  }
+  .char1, .char2, .char4, .char6, .char7, .char9, .char10, .char12 {
+    display: none;
+  }
+  .myBtns {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .start {
+    top: 500px;
+    left: 15vw;
+  }
+  .rules {
+    top: 500px;
+    left: 60vw;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

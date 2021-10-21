@@ -1,9 +1,11 @@
-$superBlue : #0176F2;
+// $superBlue : #1A8FE3;
+// $superBlue : #0176F2;
+$superBlue : #669BBC;
 $superRed : #FF0100;
 $superYellow : #F3D405;
 
 %mySpacing{
-    padding:50px 50px 0 50px;
+    padding:40px 50px 0 50px;
 }
 
 *{
@@ -24,9 +26,20 @@ a{
 }
 
 body{
-    // background-color:#0176F2;
+    background-color:$superBlue;
 }
 
+.fa-moon{
+    color:#291720;
+}
+
+.fa-sun{
+    color:$superYellow;
+}
+
+i{
+    
+}
 // .lightStyles{
 
 // }
@@ -42,13 +55,14 @@ header{
         
     .navTitle{
         grid-area: title;
-        color:red;
         text-align: center;
         letter-spacing: 1px;
 
         h1{
+            color:$superYellow;
             font-size: 2em;
             line-height: 1.5em;
+            text-shadow: 3px 3px 3px darken($superRed, 10);
         }
         
     }
@@ -60,10 +74,11 @@ header{
 
         .toggleDarkMode{
             display: inline-block;
+            cursor:pointer;
         }
 
         i{
-            font-size: 1.3em;
+            font-size: 1.5em;
             margin:0 5px;
         }
     }
@@ -79,32 +94,30 @@ header{
     text-align: left;
 
     figcaption{
+        color:darken($color: $superBlue, $amount: 70);
         font-size: 12px;
+        font-weight: 700;
     }
 
-    // .marvelLogo{
-    //     display: none;
-    // }
 }
 
 /* LEVELS */
 
 main{
     z-index: 0;
-    h2{
-        text-align: center;
-    }
 }
 
 .levelContainer{
     display:grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-areas: "logo title icons";
+    // grid-template-areas: "logo title icons";
     grid-gap:10px;
-    padding:10px 20px;
+    padding:20px 20px;
 
     .levels{
         background-color: $superYellow;
+        border:5px solid darken($superRed, 10);
+        border-radius: 5px;
         width:200px;
         text-align: center;
         padding:10px;
@@ -133,7 +146,8 @@ main{
     }
 
     button{
-        background-color:$superRed;
+        background-color:darken($superRed, 10);
+        border-radius: 5px;
         padding:5px 25px;
         color:#fff;
         border:none;
@@ -218,25 +232,25 @@ main{
     width:100%;
     height:100%;
     background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
     
     div{
         //div fit the content
 
-        width:35%;
+        width:45%;
         margin:35vh auto;
         // display: inline-block;
-        background-color:blue;
+        background-color:$superBlue;
         padding:30px 100px;
         // margin: 0 auto;
         border:5px solid red;
         
         p, h3, .close{
-            color:#fff;
+            color:darken($superRed, 50);
         }
 
         p{
-            margin:5px 0;
+            margin:10px 0;
         }
 
         .close{
@@ -255,3 +269,103 @@ main{
 .hide{
     display: none;
 }
+
+
+@media(max-width:1250px){
+   .gameRules{
+       div{
+           width:55%;
+       }
+   }
+
+   .levelContainer{
+       grid-template-columns: repeat(2, 1fr);
+   }
+
+   .characterContainer{
+       grid-template-columns: repeat(3, 1fr);
+   }
+
+    .char1, .char2, .char4, .char6, .char7, .char9, .char10, .char12{    
+        display: none;
+    }
+
+    .rules{
+        order: 1;
+    }
+
+    button{
+        position: relative;
+        top:0;
+        left:0;
+    }
+}
+
+@media(max-width:860px){
+    .gameRules{
+        div{
+            width:80%;
+            padding:30px 20px;
+
+            .close{
+                left:90%;
+                bottom:20px;
+            }
+        }
+    }
+
+    
+ 
+    .levelContainer{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    header{
+        nav{
+            padding:20px;
+            grid-template-columns: 1fr 3fr .5fr;
+            .navTitle{
+                h1{
+                    font-size:1.5em;
+                }
+            }
+        }
+   
+    }
+
+    .toggleDarkMode{
+        margin-top: 7px;
+    }
+
+
+    .navLogo{
+        img{
+            width:100px ;
+        }      
+    }
+ 
+    .characterContainer{
+        grid-template-columns: 3fr;
+        grid-template-areas: 'char';
+    }
+ 
+     .char1, .char2, .char4, .char6, .char7, .char9, .char10, .char12{    
+         display: none;
+     }
+
+     .myBtns{
+        position: absolute;
+        top: 0;
+        left:0;
+     }
+
+     .start{
+         top:500px;
+        left:15vw;
+     }
+
+     .rules{
+         top:500px;
+         left: 60vw;
+     }
+ }
