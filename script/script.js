@@ -2,9 +2,18 @@ let isDcHero = true;
 let isMarvelHero = false;
 let isDcVillain = false;
 let isMarvelVillain = false;
+
 let dcHeroes = document.querySelector('.dcHeroes');
 let dcVillains = document.querySelector('.dcVillains');
+let marvelVillains = document.querySelector('.marvelVillains');
 let marvelHeroes = document.querySelector('.marvelHeroes');
+
+function logStatus(){
+    console.log(`   DC Hero ${isDcHero}
+    DC Villain ${isDcVillain}
+    Marvel Hero ${isMarvelHero}
+    Marvel Villain ${isMarvelVillain}`)
+}
 
 function generateAnswers(result){
     let heroLogosValue =  document.querySelectorAll(`.result`);
@@ -40,31 +49,63 @@ logoContainer.addEventListener('click', swapCharacters);
 
 
 function swapCharacters(e){
-
     let dcLogo = document.querySelector('.dcLogo');
     let marvelLogo = document.querySelector('.marvelLogo');
-
     let figSpan = document.querySelector('.figSpan')
+
+    if(isDcHero){
+        // alert('DC HEROES');
+        dcHeroes.classList.toggle('hide');
+        marvelHeroes.classList.toggle('hide');
+        isDcHero = false;
+        isMarvelHero = true;
+        logStatus();
+
+    } else if(isDcVillain){
+        // alert('DC VILLAINS');
+        dcVillains.classList.toggle('hide');
+        marvelVillains.classList.toggle('hide');
+        isDcVillain = false;
+        isMarvelVillain = true;
+        logStatus();
+
+    } else if(isMarvelHero){
+        // alert('Marvel HEROES');
+        marvelHeroes.classList.toggle('hide');
+        dcHeroes.classList.toggle('hide');
+        isMarvelHero = false;
+        isDcHero = true;
+        logStatus();
+
+    } else if(isMarvelVillain){
+        // alert('Marvel VILLAINS');
+
+        marvelVillains.classList.toggle('hide');
+        dcVillains.classList.toggle('hide');
+        isMarvelVillain = false;
+        isDcVillain = true;
+        logStatus();
+    }
 
     dcLogo.classList.toggle('hide')
     marvelLogo.classList.toggle('hide')
-    dcHeroes.classList.toggle('hide')
-    dcVillains.classList.toggle('hide')
-    marvelHeroes.classList.toggle('hide')
+    // dcHeroes.classList.toggle('hide')
+    // dcVillains.classList.toggle('hide')
+    // marvelHeroes.classList.toggle('hide')
 
-    console.log(e.target)
+    // console.log(e.target)
 
-    if(e.target.getAttribute('class') == 'dcLogo'){
-        console.log('Switching to marvel');
-        isDcHero = false;
-        isMarvelHero = true;
-        figSpan.textContent = 'DC';
-    } else if (e.target.getAttribute('class') == 'marvelLogo'){
-        console.log('Switching to DC');
-        isDcHero = true;
-        isMarvelHero = false;
-        figSpan.textContent = 'Marvel';
-    }
+    // if(e.target.getAttribute('class') == 'dcLogo'){
+    //     console.log('Switching to marvel');
+    //     isDcHero = false;
+    //     isMarvelHero = true;
+    //     figSpan.textContent = 'DC';
+    // } else if (e.target.getAttribute('class') == 'marvelLogo'){
+    //     console.log('Switching to DC');
+    //     isDcHero = true;
+    //     isMarvelHero = false;
+    //     figSpan.textContent = 'Marvel';
+    // }
     
 }
 
@@ -72,22 +113,42 @@ let toggleDarkMode = document.querySelector('.toggleDarkMode');
 toggleDarkMode.addEventListener('click', darkMode);
 
 function darkMode(){
-    console.log(`DC STATUS ${isDcHero}`);
-    console.log(`mARVEL STATUS ${isMarvelHero}`);
+    // console.log(`DC STATUS ${isDcHero}`);
+    // console.log(`mARVEL STATUS ${isMarvelHero}`);
     let lightMode = document.querySelector('.lightMode');
     let darkMode = document.querySelector('.darkMode');
 
-    // darkMode.classList.toggle('hide')
-    // lightMode.classList.toggle('hide')
+    darkMode.classList.toggle('hide')
+    lightMode.classList.toggle('hide')
 
     if(isDcHero){
-        isDcVillain = true;
+        isDcHero = false;
         dcHeroes.classList.toggle('hide');
         dcVillains.classList.toggle('hide');
-        alert('DC');
+        isDcVillain = true;
+        logStatus();
+
+    } else if(isDcVillain){
+        isDcVillain = false;
+        dcHeroes.classList.toggle('hide');
+        dcVillains.classList.toggle('hide');
+        isDcHero = true;
+        logStatus();
+
     } else if(isMarvelHero){
+        isMarvelHero = false;
+        marvelHeroes.classList.toggle('hide');
+        marvelVillains.classList.toggle('hide');
+        isMarvelVillain = true;
+        logStatus();
+
+    } else if(isMarvelVillain){
+        isMarvelVillain = false;
+        marvelVillains.classList.toggle('hide');
+        marvelHeroes.classList.toggle('hide');
         isMarvelHero = true;
-        alert('Marvel')
+        logStatus();
+
     }
 
 }
@@ -96,7 +157,7 @@ function darkMode(){
 
 function main(){
 //Make Rules appear
-
+logStatus();
     let rulesBtn = document.querySelector(`.rules`);
     let rulesModal = document.querySelector(`.gameRules`)
 
