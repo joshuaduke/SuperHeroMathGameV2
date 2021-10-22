@@ -8,6 +8,10 @@ let dcVillains = document.querySelector('.dcVillains');
 let marvelVillains = document.querySelector('.marvelVillains');
 let marvelHeroes = document.querySelector('.marvelHeroes');
 
+window.localStorage.setItem('mode', 'light')
+
+console.log(window.localStorage)
+
 function logStatus(){
     console.log(`   DC Hero ${isDcHero}
     DC Villain ${isDcVillain}
@@ -109,9 +113,21 @@ toggleDarkMode.addEventListener('click', darkMode);
 function darkMode(){
     // console.log(`DC STATUS ${isDcHero}`);
     // console.log(`mARVEL STATUS ${isMarvelHero}`);
+    if(window.localStorage.getItem('mode') == null || window.localStorage.getItem('mode') == 'light'){
+        window.localStorage.setItem('mode', 'dark')
+    } else {
+        window.localStorage.setItem('mode', 'light')
+    }
+
+    console.log(localStorage)
+
     let lightMode = document.querySelector('.lightMode');
     let darkMode = document.querySelector('.darkMode');
+    let body = document.querySelector('body');
+    let figcaption = document.querySelector('figcaption')
 
+    body.classList.toggle('darkenBackground');
+    figcaption.style.color = '#fff'
     darkMode.classList.toggle('hide')
     lightMode.classList.toggle('hide')
 

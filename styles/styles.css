@@ -20,6 +20,10 @@ a {
   text-decoration: none;
 }
 
+.darkenBackground {
+  background: #0b1318;
+}
+
 body {
   background-color: #669BBC;
 }
@@ -226,7 +230,7 @@ main {
   margin: 35vh auto;
   background-color: #669BBC;
   padding: 30px 100px;
-  border: 5px solid red;
+  border: 5px solid #FF0100;
 }
 
 .gameRules div p, .gameRules div h3, .gameRules div .close {

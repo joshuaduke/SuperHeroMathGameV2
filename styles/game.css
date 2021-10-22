@@ -1,5 +1,54 @@
+* {
+  padding: 0;
+  margin: 0;
+  line-height: 1.4rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: #669BBC;
+}
+
+.darkenBackground {
+  background-color: #0b1318;
+}
+
+p, label {
+  opacity: 0.7;
+  font-weight: 700;
+}
+
+header nav {
+  padding: 20px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 2fr 1fr;
+      grid-template-columns: 1fr 2fr 1fr;
+      grid-template-areas: 'equation title darkLight';
+}
+
 header .equationBox {
-  background-color: yellow;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: equation;
+  font-size: 1.5em;
+  background-color: #F3D405;
+  padding: 10px;
+  -webkit-box-shadow: 2px 2px 2px #FF0100;
+          box-shadow: 2px 2px 2px #FF0100;
+}
+
+header .navTitle {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: title;
+  color: #F3D405;
+  font-size: 1.3em;
+  line-height: 1.5em;
+  text-shadow: 3px 3px 3px #cc0100;
+  text-align: center;
 }
 
 .gameContainer {
@@ -26,10 +75,6 @@ header .equationBox {
 
 .gameContainer .resultContainer {
   position: absolute;
-  left: 50%;
-  margin-left: -27px;
-  top: 50%;
-  margin-top: -20px;
   display: inline-block;
   background-color: rgba(255, 255, 255, 0.3);
   font-size: 1.5em;
@@ -38,6 +83,19 @@ header .equationBox {
   color: #000;
   text-shadow: 1px 1px 1px #fff;
   padding: 10px;
+}
+
+.resultsModalContainer .btnContainer {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  text-align: center;
+}
+
+.resultsModalContainer h3 {
+  color: #F3D405;
+  text-shadow: 1px 1px 1px #FF0100;
 }
 
 .userDetailsModal, .resultsModalContainer {
@@ -55,21 +113,30 @@ header .equationBox {
 
 .userDetailsModal .userDetailsModalContent, .userDetailsModal .resultsModal, .resultsModalContainer .userDetailsModalContent, .resultsModalContainer .resultsModal {
   width: 35%;
-  background-color: blue;
+  background-color: #669BBC;
   padding: 20px 50px;
   margin: 35vh auto;
-  border: 5px solid red;
+  border: 5px solid #FF0100;
 }
 
-.userDetailsModal .userDetailsModalContent h3, .userDetailsModal .userDetailsModalContent label, .userDetailsModal .userDetailsModalContent button, .userDetailsModal .resultsModal h3, .userDetailsModal .resultsModal label, .userDetailsModal .resultsModal button, .resultsModalContainer .userDetailsModalContent h3, .resultsModalContainer .userDetailsModalContent label, .resultsModalContainer .userDetailsModalContent button, .resultsModalContainer .resultsModal h3, .resultsModalContainer .resultsModal label, .resultsModalContainer .resultsModal button {
-  color: #fff;
-  text-align: center;
+.userDetailsModal .userDetailsModalContent p, .userDetailsModal .userDetailsModalContent label, .userDetailsModal .userDetailsModalContent button, .userDetailsModal .resultsModal p, .userDetailsModal .resultsModal label, .userDetailsModal .resultsModal button, .resultsModalContainer .userDetailsModalContent p, .resultsModalContainer .userDetailsModalContent label, .resultsModalContainer .userDetailsModalContent button, .resultsModalContainer .resultsModal p, .resultsModalContainer .resultsModal label, .resultsModalContainer .resultsModal button {
+  color: black;
   letter-spacing: 2px;
   margin: 20px auto;
 }
 
+.userDetailsModal .userDetailsModalContent h3, .userDetailsModal .resultsModal h3, .resultsModalContainer .userDetailsModalContent h3, .resultsModalContainer .resultsModal h3 {
+  margin: 10px 0;
+}
+
+.userDetailsModal .userDetailsModalContent label, .userDetailsModal .resultsModal label, .resultsModalContainer .userDetailsModalContent label, .resultsModalContainer .resultsModal label {
+  margin-right: 10px;
+}
+
 .userDetailsModal .userDetailsModalContent input, .userDetailsModal .resultsModal input, .resultsModalContainer .userDetailsModalContent input, .resultsModalContainer .resultsModal input {
+  margin-top: 20px;
   padding: 5px 10px;
+  border: none;
 }
 
 .userDetailsModal .userDetailsModalContent input:focus, .userDetailsModal .resultsModal input:focus, .resultsModalContainer .userDetailsModalContent input:focus, .resultsModalContainer .resultsModal input:focus {
@@ -77,17 +144,35 @@ header .equationBox {
 }
 
 .userDetailsModal .userDetailsModalContent button, .userDetailsModal .resultsModal button, .resultsModalContainer .userDetailsModalContent button, .resultsModalContainer .resultsModal button {
-  display: block;
-  color: #000;
-  padding: 10px 20px;
+  background-color: #cc0100;
+  border-radius: 5px;
+  padding: 5px 25px;
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  font-size: 1.1em;
+  letter-spacing: 2px;
+  -webkit-box-shadow: 1px 3px 1px #000;
+          box-shadow: 1px 3px 1px #000;
   cursor: pointer;
 }
 
 .userDetailsModal .userDetailsModalContent p, .userDetailsModal .resultsModal p, .resultsModalContainer .userDetailsModalContent p, .resultsModalContainer .resultsModal p {
   text-align: center;
   font-size: 1.2em;
-  color: #fff;
   margin: 20px 0;
+}
+
+.userDetailsModal .userDetailsModalContent .newHighscore, .userDetailsModal .resultsModal .newHighscore, .resultsModalContainer .userDetailsModalContent .newHighscore, .resultsModalContainer .resultsModal .newHighscore {
+  font-size: 1.3em;
+}
+
+.userDetailsModal .userDetailsModalContent .newHighscore p, .userDetailsModal .resultsModal .newHighscore p, .resultsModalContainer .userDetailsModalContent .newHighscore p, .resultsModalContainer .resultsModal .newHighscore p {
+  color: #F3D405;
+}
+
+.userDetailsModal .resultsModal, .resultsModalContainer .resultsModal {
+  margin: 25vh auto;
 }
 
 .resultsModalContainer, .newHighscore {
@@ -103,7 +188,7 @@ header .equationBox {
   height: 100%;
   background-color: black;
   /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.8);
   /* Black w/ opacity */
   z-index: 1000;
 }
@@ -114,18 +199,28 @@ header .equationBox {
   padding: 20px 50px;
   margin: 40vh auto;
   text-align: center;
+  color: #FF0100;
 }
 
 footer {
-  width: 100%;
-  padding: 52px 20px;
-  background-color: yellow;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  padding: 10px;
 }
 
 footer .scoreContainer {
+  padding: 10px;
+  background-color: #F3D405;
+  text-align: center;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[4];
       grid-template-columns: repeat(4, 1fr);
+  border: 3px solid #FF0100;
 }
 /*# sourceMappingURL=game.css.map */

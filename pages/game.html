@@ -5,24 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SuperHero Math Game</title>
-    <link rel="stylesheet" href="/styles/styles.css">
+    <!-- <link rel="stylesheet" href="/styles/styles.css"> -->
     <link rel="stylesheet" href="/styles/game.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
             <div class="equationBox">
-                <p class="equation"></p>
+                <p >Equation: <span class="equation"></span></p>
             </div>
             <div class="navTitle">
                 <h1>SUPERHERO MATH GAME</h1>
             </div>
-            <div class="navIcons">
-                <i class="fas fa-volume-off"></i>
-                <i class="fas fa-volume-up"></i>
+            <!-- <div class="navIcons">
                 <i class="fas fa-sun"></i>
                 <i class="fas fa-moon"></i>
-            </div>
+            </div> -->
         </nav>
     </header>
 
@@ -89,7 +90,7 @@
 
         <section class="resultsModalContainer">
             <div class="resultsModal">
-                <h3 class="userDetails"></h3>
+                <h3>Player: <span class="userDetails"></span></h3>
                 <p>Your Final Score is: <span class="finalScore"></span></p>
                 <p>Amount of wrong answers: <span class="finalMisses"></span> </p>
                 <hr>
@@ -97,11 +98,15 @@
                 <p>User: <span class="highScoreName"></span></p>
                 <p>Score: <span class="highScoreNum"></span></p>
                 <div class="newHighscore">
-                    <p>NEW HIGHSCORE</p>
+                    <p>*NEW HIGHSCORE*</p>
                 </div>
-                <div>
-                    <a href="/">Home</a>
-                    <a href="/pages/game.html">New Game</a>
+                <div class="btnContainer">
+                    <a href="/">
+                        <button>Home</button> 
+                    </a>
+                    <a href="/pages/game.html">
+                       <button>New Game </button> 
+                    </a>
                 </div>
             </div>
 
@@ -128,7 +133,7 @@
                 <p>Timer: <span class="timer"> </span> </p>
             </div>
             <div>
-                <p>Level: </p>
+                <p >Level: <span class="currentLevel"></span> </p>
             </div>
         </section>
     </footer>

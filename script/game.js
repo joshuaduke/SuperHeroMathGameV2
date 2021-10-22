@@ -3,6 +3,7 @@ let modalErrorMsg = document.querySelector(`.errorMsg`);
 let playBtn = document.querySelector(`.playBtn`);
 let detailsModal = document.querySelector(`.userDetailsModal`);
 let resultsModal = document.querySelector('.resultsModalContainer');
+let displayCurrentLevel = document.querySelector('.currentLevel')
 let answersArr = [];
 let score = 0;
 let scoreContainer = document.querySelector(`.score`);
@@ -15,10 +16,26 @@ let localHighScore = 0;
 let storeLocal = window.localStorage;
 let resetTimer = false;
 
+
 if(localStorage.length == 0){
     window.localStorage.setItem('name', localName)
     window.localStorage.setItem('highscore', localHighScore)
 }
+
+if(localStorage.getItem('mode') == 'dark'){
+    let body = document.querySelector('body');
+    let gameContainer = document.querySelector('.gameContainer');
+    let result = document.querySelectorAll('.result');
+
+    body.classList.add('darkenBackground');
+    gameContainer.style.background = '#0B1318';
+    result.forEach(item => {
+        item.style.color = "#fff"
+    })
+
+}
+
+console.log(storeLocal);
 
 
 // If username is valid run application
@@ -206,8 +223,7 @@ function playLevelOne(){
 
     console.log("LEVEL1")
     answersArr = [];
-    // timer(15, 1);
-    //level one = addition
+    displayCurrentLevel.textContent = '1';
     selectAnwser('+');
 }
 
@@ -215,7 +231,7 @@ function playLevelTwo(){
     runCountdown(5, 2)
     console.log("LEVEL2");
     answersArr = [];
-    // timer(10, 2);
+    displayCurrentLevel.textContent = '2';
     selectAnwser('-');
 }
 
@@ -223,7 +239,7 @@ function playLevelThree(){
     runCountdown(5, 3);
     console.log("LEVEL3");
     answersArr = [];
-    // timer(10, 3);
+    displayCurrentLevel.textContent = '3';
     selectAnwser('*');
 }
 
@@ -231,6 +247,7 @@ function playLevelFour(){
     runCountdown(5, 4);
     console.log("LEVEL3");
     answersArr = [];
+    displayCurrentLevel.textContent = '4';
     selectAnwser('/');
 }
 
@@ -257,11 +274,7 @@ function displayResults(){
         window.localStorage.setItem('name', userName.value)
         window.localStorage.setItem('highscore', score)
         console.log(localStorage)
-    } else {
-        alert("Try Again")
-    }
-
-    
+    } 
 }
 
 function selectAnwser(operator){
@@ -314,8 +327,8 @@ function logoPosition(){
 
     let heroLogos =  document.querySelectorAll(`.heroLogo`);
     let gameContainer = document.querySelector(`.gameContainer`);
-    let top = gameContainer.offsetHeight - 100;
-    let left = gameContainer.offsetWidth - 115;
+    let top = gameContainer.offsetHeight - 110;
+    let left = gameContainer.offsetWidth - 220;
 
     console.log(gameContainer.offsetHeight);
     console.log(gameContainer.offsetWidth);

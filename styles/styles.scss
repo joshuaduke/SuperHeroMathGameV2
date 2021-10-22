@@ -25,8 +25,13 @@ a{
     text-decoration: none;
 }
 
+.darkenBackground{
+    background: darken($color: $superBlue, $amount: 50);
+}
+
 body{
     background-color:$superBlue;
+    
 }
 
 .fa-moon{
@@ -243,7 +248,7 @@ main{
         background-color:$superBlue;
         padding:30px 100px;
         // margin: 0 auto;
-        border:5px solid red;
+        border:5px solid $superRed;
         
         p, h3, .close{
             color:darken($superRed, 50);
