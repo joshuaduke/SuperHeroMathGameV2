@@ -33,9 +33,10 @@ header .equationBox {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: equation;
-  font-size: 1.5em;
+  font-size: clamp(1em, 3vw, 1.3em);
   background-color: #F3D405;
   padding: 10px;
+  border-radius: 5px;
   -webkit-box-shadow: 2px 2px 2px #FF0100;
           box-shadow: 2px 2px 2px #FF0100;
 }
@@ -45,7 +46,7 @@ header .navTitle {
   -ms-grid-column: 2;
   grid-area: title;
   color: #F3D405;
-  font-size: 1.3em;
+  font-size: clamp(1em, 3vw, 1.5em);
   line-height: 1.5em;
   text-shadow: 3px 3px 3px #cc0100;
   text-align: center;
@@ -117,6 +118,7 @@ header .navTitle {
   padding: 20px 50px;
   margin: 35vh auto;
   border: 5px solid #FF0100;
+  border-radius: 5px;
 }
 
 .userDetailsModal .userDetailsModalContent p, .userDetailsModal .userDetailsModalContent label, .userDetailsModal .userDetailsModalContent button, .userDetailsModal .resultsModal p, .userDetailsModal .resultsModal label, .userDetailsModal .resultsModal button, .resultsModalContainer .userDetailsModalContent p, .resultsModalContainer .userDetailsModalContent label, .resultsModalContainer .userDetailsModalContent button, .resultsModalContainer .resultsModal p, .resultsModalContainer .resultsModal label, .resultsModalContainer .resultsModal button {
@@ -137,6 +139,7 @@ header .navTitle {
   margin-top: 20px;
   padding: 5px 10px;
   border: none;
+  border-radius: 5px;
 }
 
 .userDetailsModal .userDetailsModalContent input:focus, .userDetailsModal .resultsModal input:focus, .resultsModalContainer .userDetailsModalContent input:focus, .resultsModalContainer .resultsModal input:focus {
@@ -194,8 +197,8 @@ header .navTitle {
 }
 
 .countdownContainer .countdown {
-  width: 35%;
-  font-size: 3em;
+  width: 100%;
+  font-size: clamp(2em, 3vw, 4em);
   padding: 20px 50px;
   margin: 40vh auto;
   text-align: center;
@@ -222,5 +225,32 @@ footer .scoreContainer {
   -ms-grid-columns: (1fr)[4];
       grid-template-columns: repeat(4, 1fr);
   border: 3px solid #FF0100;
+  border-radius: 5px;
+}
+
+@media (max-width: 1000px) {
+  .gameRules div {
+    width: 80%;
+    padding: 30px 20px;
+  }
+  .gameRules div .close {
+    left: 90%;
+    bottom: 20px;
+  }
+  .userDetailsModal .userDetailsModalContent {
+    width: 60%;
+  }
+}
+
+@media (max-width: 860px) {
+  .userDetailsModal .userDetailsModalContent, .userDetailsModal .resultsModal, .resultsModalContainer .userDetailsModalContent, .resultsModalContainer .resultsModal {
+    width: 80%;
+  }
+}
+
+@media (max-width: 560px) {
+  .userDetailsModal .userDetailsModalContent, .userDetailsModal .resultsModal, .resultsModalContainer .userDetailsModalContent, .resultsModalContainer .resultsModal {
+    width: 90%;
+  }
 }
 /*# sourceMappingURL=game.css.map */
