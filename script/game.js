@@ -17,7 +17,7 @@ let storeLocal = window.localStorage;
 let resetTimer = false;
 
 
-if(localStorage.length == 0){
+if(localStorage.length == 1){
     window.localStorage.setItem('name', localName)
     window.localStorage.setItem('highscore', localHighScore)
 }
