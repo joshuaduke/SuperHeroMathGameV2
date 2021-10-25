@@ -47,7 +47,6 @@ if(playBtn){
             
             modalErrorMsg.innerHTML = "Please Enter a User Name"
         } else {
-            // let name = userName.value;
             detailsModal.style.display = "none";
             playLevelOne();
             
@@ -57,7 +56,6 @@ if(playBtn){
 }
 
 
-//Return a random number from 1 - sepcified
 function getRandomNum(num){
     return Math.floor(Math.random() * num) + 1 ;
 }
@@ -215,37 +213,31 @@ function clearGame(){
 
     resetTimer = true;
 }
-// Run level one
-//This level will run for 30 seconds and will
-// call the create equation function with the addition operator
-function playLevelOne(){
-    runCountdown(5, 1);
 
-    console.log("LEVEL1")
+function playLevelOne(){
+    runCountdown(15, 1);
+
     answersArr = [];
     displayCurrentLevel.textContent = '1';
     selectAnwser('+');
 }
 
 function playLevelTwo(){
-    runCountdown(5, 2)
-    console.log("LEVEL2");
+    runCountdown(15, 2)
     answersArr = [];
     displayCurrentLevel.textContent = '2';
     selectAnwser('-');
 }
 
 function playLevelThree(){
-    runCountdown(5, 3);
-    console.log("LEVEL3");
+    runCountdown(15, 3);
     answersArr = [];
     displayCurrentLevel.textContent = '3';
     selectAnwser('*');
 }
 
 function playLevelFour(){
-    runCountdown(5, 4);
-    console.log("LEVEL3");
+    runCountdown(15, 4);
     answersArr = [];
     displayCurrentLevel.textContent = '4';
     selectAnwser('/');
@@ -264,7 +256,7 @@ function displayResults(){
     userDetails.innerHTML = userName.value;
     finalMisses.innerHTML = misses;
     highScoreName.innerHTML =  storeLocal.getItem('name');
-    highScoreNum.innerHTML = storeLocal.getItem('highscore');
+    highScoreNum.innerHTML = storeLocal.getItem('highscore');   
     resultsModal.style.display = 'block'
 
 
@@ -330,8 +322,6 @@ function logoPosition(){
     let top = gameContainer.offsetHeight - 110;
     let left = gameContainer.offsetWidth - 220;
 
-    console.log(gameContainer.offsetHeight);
-    console.log(gameContainer.offsetWidth);
     heroLogos.forEach(element => {
         element.style.display = "block"
         element.style.top = getRandomNum(top) + 'px';
@@ -386,9 +376,3 @@ function timer(time, level){
         timeleft -= 1;
     }, 1000);
 }
-
-// TODO
-
-// Do not allow duplicate values on hero logos
-//3 second logo position for level 3 and level 4
-// improve upon styles

@@ -1,5 +1,3 @@
-// $superBlue : #1A8FE3;
-// $superBlue : #0176F2;
 $superBlue : #669BBC;
 $superRed : #FF0100;
 $superYellow : #F3D405;
@@ -41,13 +39,6 @@ body{
 .fa-sun{
     color:$superYellow;
 }
-
-i{
-    
-}
-// .lightStyles{
-
-// }
 
 header{
     width:100%;
@@ -142,7 +133,6 @@ main{
     padding:0 20px;
 
     .heroes{
-        // text-align: center;
         width:auto;
     }
 
@@ -244,10 +234,8 @@ main{
 
         width:45%;
         margin:35vh auto;
-        // display: inline-block;
         background-color:$superBlue;
         padding:30px 100px;
-        // margin: 0 auto;
         border:5px solid $superRed;
         
         p, h3, .close{

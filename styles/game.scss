@@ -69,19 +69,12 @@ header{
         position: absolute;
         top:0;
         left:0;
-        // display: flex;
         align-content: center;
         justify-content: center;
     }
 
     .resultContainer{
         position: absolute;
-        // top:35px;
-        // left:55px;
-        // left:50%;
-        // margin-left:-27px;
-        // top:50%;
-        // margin-top:-20px;
         display: inline-block;
     
         background-color: rgba($color: #fff, $alpha: 0.3);
@@ -120,7 +113,6 @@ header{
 
     .userDetailsModalContent, .resultsModal{
         //div fit the content
-        // display: inline-block;
         width:35%;
         background-color:$superBlue;
         padding:20px 50px;
@@ -143,7 +135,6 @@ header{
         }
 
         input{
-            // font-weight: bold;
             margin-top: 20px;
             padding: 5px 10px;
             border:none;
@@ -169,7 +160,6 @@ header{
         p{
             text-align: center;
             font-size:1.2em;
-            // color:#fff;
             margin:20px 0;
         }
 

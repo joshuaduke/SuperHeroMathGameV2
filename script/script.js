@@ -111,8 +111,6 @@ let toggleDarkMode = document.querySelector('.toggleDarkMode');
 toggleDarkMode.addEventListener('click', darkMode);
 
 function darkMode(){
-    // console.log(`DC STATUS ${isDcHero}`);
-    // console.log(`mARVEL STATUS ${isMarvelHero}`);
     if(window.localStorage.getItem('mode') == null || window.localStorage.getItem('mode') == 'light'){
         window.localStorage.setItem('mode', 'dark')
     } else {
