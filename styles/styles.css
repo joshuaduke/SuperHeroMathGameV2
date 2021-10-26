@@ -116,10 +116,11 @@ main {
   background-color: #F3D405;
   border: 5px solid #cc0100;
   border-radius: 5px;
-  width: 200px;
+  width: clamp(100px, 100%, 200px);
   text-align: center;
   padding: 10px;
   margin: 0 auto;
+  font-size: clamp(12px, 2vw, 22px);
 }
 
 /* CHARACTERS */

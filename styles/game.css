@@ -252,5 +252,9 @@ footer .scoreContainer {
   .userDetailsModal .userDetailsModalContent, .userDetailsModal .resultsModal, .resultsModalContainer .userDetailsModalContent, .resultsModalContainer .resultsModal {
     width: 90%;
   }
+  .gameContainer .heroLogo img {
+    width: auto;
+    height: 75px;
+  }
 }
 /*# sourceMappingURL=game.css.map */
